@@ -3,6 +3,11 @@
     <v-form ref="form">
       <v-container>
         <p>Tutaj będzie treść strony głównej.</p>
+        <div class="image">
+          <a href="https://media.tenor.com/images/7287cd13acf63ccfa11c00aabee30e7f/tenor.png">
+            <img src="https://media.tenor.com/images/7287cd13acf63ccfa11c00aabee30e7f/tenor.png" style="width: 1500px;">
+          </a>
+        </div>
       </v-container>
     </v-form>
   </v-card>
@@ -17,3 +22,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.image {
+  text-align: center;
+}
+</style>
