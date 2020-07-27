@@ -9,6 +9,8 @@
         </div>
         <v-toolbar-title class="ml-5"><span style="color: white">Schronisko dla zwierząt</span></v-toolbar-title>
         <!-- Tutaj dodajemy elementy app baru -->
+        
+        <v-btn class="ml-5" text small color="white" to='/'>Strona główna</v-btn>
       </v-app-bar>
       <!-- Nie zmieniać zawartości tagu <v-main> -->
       <v-main><router-view/></v-main>
