@@ -1,56 +1,28 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
+  <div id="app">
+    <v-app>
+      <v-app-bar app color="primary" dark>
+        <div class="d-flex align-center">
+          <router-link to="/">
+            <v-img :src="require('@/assets/logo.png')" alt="logo" contain height="100" width="50"/>
+          </router-link>
+        </div>
+        <v-toolbar-title class="ml-5">Schronisko dla zwierząt</v-toolbar-title>
+        <!-- Tutaj dodajemy elementy app baru -->
+        <v-btn class="ml-5" text small color="white" to='/'>Strona główna</v-btn>
+      </v-app-bar>
+      <!-- Nie zmieniać zawartości tagu <v-main> -->
+      <v-main><router-view/></v-main>
+    </v-app>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
   },
 
   data: () => ({
