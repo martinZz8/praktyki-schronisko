@@ -2,11 +2,12 @@
 <html lang='pl'>
     <head>
         <meta charset="utf-8">
+        {% load static %}
     </head>
     <body>
         <div>
-            <img src="../../../backend_api/media/image/test2.png">
-            <img src="F:\STUDIA\SEM 4\Projekt\stronka\praktyki-schronisko\backend_api\backend_api\media\image\test2.png">
+            <img src="{{ zdjecie.image.url }}">
+            <img src="../../../backend_api/media/image/AR-200319192.jpg">
         </div>
     </body>
 </html>
