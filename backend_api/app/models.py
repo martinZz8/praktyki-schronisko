@@ -58,7 +58,7 @@ class News(models.Model):
 
 
 class Photo(models.Model):
-    animal = models.ForeignKey(Animal, models.DO_NOTHING)
+    animal = models.ForeignKey(Animal, models.DO_NOTHING, blank=True, null=True)
     image = models.ImageField(upload_to = 'image', blank=True)
     thumbnail = models.BooleanField(default = False)
 
