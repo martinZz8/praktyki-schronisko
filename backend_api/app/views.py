@@ -4,5 +4,5 @@ from .models import Photo
 # Create your views here.
 
 def image(request):
-    image_file = Photo.objects.get(pk=1)
+    image_file = Photo.objects.get(pk=2)
     return render(request, 'app/test.html', {'zdjecie':image_file})
