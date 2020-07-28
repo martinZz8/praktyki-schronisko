@@ -6,14 +6,12 @@
     </head>
     <body>
         <div>
-            {% for images in zdjecie %}
             <img src="{{ images.image.url }}">
             <br/><br/>
             <h1>Adres:</h1>
             <br/><br/>
             <span>{{ images.image.url }}</span>
             <br/><br/>
-            {% endfor %}
         </div>
     </body>
 </html>
