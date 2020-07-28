@@ -58,8 +58,9 @@ class News(models.Model):
 
 
 class Photo(models.Model):
-    image = models.ImageField(upload_to = 'image', blank=True)
     animal = models.ForeignKey(Animal, models.DO_NOTHING)
+    image = models.ImageField(upload_to = 'image', blank=True)
+    thumbnail = models.BooleanField(default = False)
 
     class Meta:
         managed = True
