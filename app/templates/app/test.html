@@ -6,6 +6,8 @@
     </head>
     <body>
         <div>
+            {% block title %}My amazing blog{% endblock %}
+            {% block content %}
             {% for images in zdjecie %}
             <img src="{{ images.image.url }}">
             <br/><br/>
@@ -14,6 +16,7 @@
             <span>{{ images.image.url }}</span>
             <br/><br/>
             {% endfor %}
+            {% endblock %}
         </div>
     </body>
 </html>

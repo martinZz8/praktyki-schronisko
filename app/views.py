@@ -11,3 +11,7 @@ def rendertest(request):
 def rendertest2(request):
     image_file = get_thumbnail(request, 1)
     return render(request, 'app/test2.html', {'images':image_file})
+
+def render_base(request):
+    image_file = get_thumbnail(request, 1)
+    return render(request, 'app/base.html', {'images':image_file})
