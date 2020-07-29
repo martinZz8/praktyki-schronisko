@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="pl">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <v-app>
+                <h1>Eluwina</h1>
+                <br/><br/>
+                <span class="klasa1">Wiadmość: [[ message ]]</span>
+                <v-btn text color="error" left small max-height="15px" max-width="30px" class="pa-8">Error</v-btn>
+                <br/>
+                <img class="thumbnail" src="{{ images.image.url }}">
+            </v-app>
+        </div>
+    </body>
+
+</html>
+
+<script>
+var app = new Vue({
+  delimiters: ["[[", "]]"],
+  el: '#app',
+  vuetify: new Vuetify(),
+  data: {
+    message: 'Hello'
+  },
+});
+
+</script>

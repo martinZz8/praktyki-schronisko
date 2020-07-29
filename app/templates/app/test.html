@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang='pl'>
+    <head>
+        <meta charset="utf-8">
+        {% load static %}
+    </head>
+    <body>
+        <div>
+            {% block title %}My amazing blog{% endblock %}
+            {% block content %}
+            {% for images in zdjecie %}
+            <img src="{{ images.image.url }}">
+            <br/><br/>
+            <h1>Adres:</h1>
+            <br/><br/>
+            <span>{{ images.image.url }}</span>
+            <br/><br/>
+            {% endfor %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
