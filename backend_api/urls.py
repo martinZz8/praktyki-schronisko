@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.render_base, name='base'),
     path('test2/',views.rendertest2, name='images'),
-    path('adminpage/', adminviews.render_thumbnail, name='images'),
+    path('adminpage/', adminviews.render_thumbnail, name='admin'),
     path('adminpage/adminanimals', adminviews.admin_animal_retrieve, name='animals'),
+    path('adminpage/adminnews', adminviews.admin_news_retrieve, name='adminnews'),
+    path('adminpage/adminnews/newnews', adminviews.new_news, name='newnews'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

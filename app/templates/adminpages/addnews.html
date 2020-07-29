@@ -23,30 +23,25 @@
                     </v-toolbar>
                 </div>
                 <br/><br/>
-                <table>
-                    <tr>
-                        <th>Zdjęcie</th>
-                        <th>Imię</th>
-                        <th>Wiek</th>
-                        <th>Płeć</th>
-                        <th>Rasa</th>
-                        <th>Wielkość</th>
-                        <th>Data przybycia</th>
-                        <th>Opis</th>
-                    </tr>
-                    {% for animal in animals %}
-                     <tr>
-                        <td>{{animal.name}}</td>
-                        <td>{{animal.name}}</td>
-                        <td>{{animal.age}}</td>
-                        <td>{{animal.sex}}</td>
-                        <td>{{animal.race}}</td>
-                        <td>{{animal.type}}</td>
-                        <td>{{animal.entered}}</td>
-                        <td>{{animal.description}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
+                <div class="banner">
+                    <div class="container">
+                        <div class="banner-content">
+                            <form method = 'POST' enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <table>
+                                    {% for new in addnews %}
+                                    <tr>
+                                        <th>{{new.content}}</th>
+                                        <td>{{ new }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                                <br />
+                                <v-btn type="submit" color="rgba(60, 200, 100, 0.8)" small min-height="100px" max-width="200px" class="ma-3">Zapisz</v-btn>
+                            </form>
+                        </div>
+                    </div>
+                </div> 
             </v-app>
         </div>
     </body>
