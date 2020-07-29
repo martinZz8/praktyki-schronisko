@@ -6,7 +6,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="{% static 'style_admin.css' %}">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
@@ -20,7 +20,7 @@
                 <v-btn text color="error" left small max-height="15px" max-width="30px" class="pa-8">Error</v-btn>
                 <br/>
                 <img class="thumbnail" src="{{ images.image.url }}">
-                <table style="width:40%; margin-left:auto;margin-right:auto;">
+                <table>
                     <tr>
                         <th>Zdjęcie</th>
                         <th>Imię</th>
@@ -30,21 +30,19 @@
                         <th>Wielkość</th>
                         <th>Data przybycia</th>
                         <th>Opis</th>
-                     </tr>
-                    {% block content %}
+                    </tr>
                     {% for animal in animals %}
                      <tr>
-                         <td>{{thumbnails[0].image.url}}</td>
-                         <td>{{animal.name}}</td>
-                         <td>{{animal.age}}</td>
-                         <td>{{animal.sex}}</td>
-                         <td>{{animal.race}}</td>
-                         <td>{{animal.type}}</td>
-                         <td>{{animal.entered}}</td>
-                         <td>{{animal.description}}</td>
-                     </tr>
+                        <td>{{animal.name}}</td>
+                        <td>{{animal.name}}</td>
+                        <td>{{animal.age}}</td>
+                        <td>{{animal.sex}}</td>
+                        <td>{{animal.race}}</td>
+                        <td>{{animal.type}}</td>
+                        <td>{{animal.entered}}</td>
+                        <td>{{animal.description}}</td>
+                    </tr>
                     {% endfor %}
-                    {% endblock %}
                 </table>
             </v-app>
         </div>
