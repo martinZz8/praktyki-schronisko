@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Admin, Animal, Application, News, Photo
+from app.model.models import Admin, Animal, Application, News, Photo
 
 # Register your models here.
 
