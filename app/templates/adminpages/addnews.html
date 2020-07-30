@@ -25,35 +25,32 @@
                 <br/><br/>
                 <v-container fluid>
                     <v-row>
-                        <v-col cols="2"></v-col>
-                        <v-col cols="8">
-                            <div class="banner">
-                                <div class="container">
-                                    <div class="banner-content">
-                                        <form method = 'POST' enctype="multipart/form-data">
-                                            {% csrf_token %}
-                                            <table>
-                                                {% for new in addnews %}
-                                                <tr>
-                                                    <td>{{ new }}</td>
-                                                </tr>
-                                                {% endfor %}
-                                            </table>
-                                                <v-row>
-                                                    <v-col cols="4"></v-col>
-                                                    <v-col cols="4">
-                                                        <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Zapisz</v-btn>
-                                                    </v-col>
-                                                    <v-col cols="4"></v-col>
-                                                </v-row>
-                                        </form>
+                        <v-col cols="4"></v-col>
+                        <v-col cols="4">
+                            <v-card>
+                                <div class="banner">
+                                    <div class="container">
+                                        <div class="banner-content">
+                                            <form method = 'POST' enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <table>
+                                                    {% for new in addnews %}
+                                                    <tr>
+                                                        <td>{{ new }}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </table>
+                                                <br/>
+                                                <div style="border-top: 1px solid; height: 20px;"></div>
+                                                <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Zapisz</v-btn>  
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </v-card>
                         </v-col>
-                        <v-col cols="2"></v-col>
+                        <v-col cols="4"></v-col>
                     </v-row>
- 
                 </v-container>
             </v-app>
         </div>

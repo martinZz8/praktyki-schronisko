@@ -9,6 +9,14 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
+from django.views.decorators.cache import cache_page
+from django.views.decorators.csrf import csrf_protect
+import json
+from django.conf import settings
+from django.conf.urls import url
+from django.contrib import messages
+
+
 def render_thumbnail(request):
     image_file = get_thumbnail(request, 1)
     return render(request, 'adminpages/adminpage.html', {'images':image_file})
@@ -28,3 +36,24 @@ def render_addnews(request):
        form.save()
        return redirect('adminnews')
     return render(request, 'adminpages/addnews.html', {'addnews':form})
+
+def render_news_delete(request, id_news):
+    id_news = int(id_news)
+    try:
+        news = News.objects.get(ID = id_news)
+    except News.DoesNotExist:
+        return redirect('adminnews')
+    news.delete()
+    return redirect('adminnews')
+
+def render_news_update(request, id_news):
+    id_news = int(id_news)
+    try:
+        news = News.objects.get(ID = id_news)
+    except News.DoesNotExist:
+        return redirect('adminnews')
+    news_form = New_Create(request.POST or None, instance = news)
+    if news_form.is_valid():
+       news_form.save()
+       return redirect('adminnews')
+    return render(request, 'adminpages/addnews.html', {'addnews':news_form})
