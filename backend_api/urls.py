@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app import views, adminviews
+from app.view import views, adminviews
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -24,7 +24,7 @@ urlpatterns = [
     path('',views.render_base, name='base'),
     path('test2/',views.rendertest2, name='images'),
     path('adminpage/', adminviews.render_thumbnail, name='admin'),
-    path('adminpage/adminanimals', adminviews.admin_animal_retrieve, name='animals'),
-    path('adminpage/adminnews', adminviews.admin_news_retrieve, name='adminnews'),
-    path('adminpage/adminnews/newnews', adminviews.new_news, name='newnews'),
+    path('adminpage/adminanimals', adminviews.render_adminanimals, name='animals'),
+    path('adminpage/adminnews', adminviews.render_adminnews, name='adminnews'),
+    path('adminpage/adminnews/newnews', adminviews.render_addnews, name='newnews'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -6,7 +6,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'style_admin.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/style_admin.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
@@ -23,25 +23,38 @@
                     </v-toolbar>
                 </div>
                 <br/><br/>
-                <div class="banner">
-                    <div class="container">
-                        <div class="banner-content">
-                            <form method = 'POST' enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <table>
-                                    {% for new in addnews %}
-                                    <tr>
-                                        <th>{{new.content}}</th>
-                                        <td>{{ new }}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </table>
-                                <br />
-                                <v-btn type="submit" color="rgba(60, 200, 100, 0.8)" small min-height="100px" max-width="200px" class="ma-3">Zapisz</v-btn>
-                            </form>
-                        </div>
-                    </div>
-                </div> 
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="2"></v-col>
+                        <v-col cols="8">
+                            <div class="banner">
+                                <div class="container">
+                                    <div class="banner-content">
+                                        <form method = 'POST' enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <table>
+                                                {% for new in addnews %}
+                                                <tr>
+                                                    <th>{{new.content}}</th>
+                                                    <td>{{ new }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </v-col>
+                        <v-col cols="2"></v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col cols="2"></v-col>
+                        <v-col cols="8">
+                            <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Zapisz</v-btn>
+                        </v-col>
+                        <v-col cols="2"></v-col>
+                    </v-row>
+                </v-container>
             </v-app>
         </div>
     </body>

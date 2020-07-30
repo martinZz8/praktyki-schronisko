@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Photo
-from .photo_views import image, images_list, get_thumbnail
+from app.model.models import Photo
+from app.controller.photo_controller import image, images_list, get_thumbnail
 
 # Create your views here.
 
