@@ -1,0 +1,42 @@
+html, .myFont
+{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.v-toolbar__title > .v-btn
+{
+    font-weight: 900;
+    font-size: 20px;
+}
+
+table
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table, td, th
+{
+    border: 1px solid black
+}
+
+tr
+{
+    min-width: 500px;
+}
+
+td, th
+{
+    min-height: 200px;
+    list-style: none;
+    padding: 5px;
+}
+
+.thumbnail
+{
+    max-width: 130px;
+    max-height: 130px;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="pl">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'style_admin.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <v-app class="myFont">
+                <div>
+                    <v-toolbar color="rgba(60, 200, 100, 1)">       
+                        <v-toolbar-title><v-btn color="rgba(60, 200, 100, 1)" href="{% url 'admin' %}">Panel administracyjny</v-btn></v-toolbar-title>
+                        <v-spacer></v-spacer>
+                    </v-toolbar>
+                </div>
+                <br/><br/>
+                <v-row>
+                    <v-col cols="1">
+                        <v-btn color="rgba(60, 200, 100, 0.8)" small min-height="100px" max-width="200px" style="margin:20px; margin-left:130px;" href="{% url 'newnews' %}">Dodaj nowy post</v-btn>
+                    </v-col>
+                    <v-col cols="11">
+                        <table>
+                            <tr>
+                                <th>Treść</th>
+                                <th>Data dodania</th>
+                            </tr>
+                            {% for new in news %}
+                            <tr>
+                                <td>{{new.content}}</td>
+                                <td>{{new.date}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </v-col>
+                </v-row>
+            </v-app>
+        </div>
+    </body>
+</html>
+
+<script>
+var app = new Vue({
+  delimiters: ["[[", "]]"],
+  el: '#app',
+  vuetify: new Vuetify(),
+  data: {
+    message: 'Hello'
+  },
+});
+
+</script>

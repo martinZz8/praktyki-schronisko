@@ -18,6 +18,7 @@ class Admin(models.Model):
 
 
 class Animal(models.Model):
+    ID = models.AutoField(primary_key=True)
     name = models.CharField(max_length=25, blank=True, null=True)
     age = models.CharField(max_length=20)
     sex = models.CharField(max_length=10)
@@ -36,6 +37,7 @@ class Animal(models.Model):
 
 
 class Application(models.Model):
+    ID = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=30)
     email = models.CharField(max_length=40)
@@ -48,6 +50,7 @@ class Application(models.Model):
         db_table = 'application'
 
 class News(models.Model):
+    ID = models.AutoField(primary_key=True)
     content = models.TextField()
     date = models.DateTimeField()
 
@@ -58,6 +61,7 @@ class News(models.Model):
 
 
 class Photo(models.Model):
+    ID = models.AutoField(primary_key=True)
     animal = models.ForeignKey(Animal, models.DO_NOTHING, blank=True, null=True)
     image = models.ImageField(upload_to = 'image', blank=True)
     thumbnail = models.BooleanField(default = False)
