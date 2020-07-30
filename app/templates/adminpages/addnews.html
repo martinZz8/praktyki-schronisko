@@ -35,11 +35,17 @@
                                             <table>
                                                 {% for new in addnews %}
                                                 <tr>
-                                                    <th>{{new.content}}</th>
                                                     <td>{{ new }}</td>
                                                 </tr>
                                                 {% endfor %}
                                             </table>
+                                                <v-row>
+                                                    <v-col cols="4"></v-col>
+                                                    <v-col cols="4">
+                                                        <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Zapisz</v-btn>
+                                                    </v-col>
+                                                    <v-col cols="4"></v-col>
+                                                </v-row>
                                         </form>
                                     </div>
                                 </div>
@@ -47,13 +53,7 @@
                         </v-col>
                         <v-col cols="2"></v-col>
                     </v-row>
-                    <v-row>
-                        <v-col cols="2"></v-col>
-                        <v-col cols="8">
-                            <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Zapisz</v-btn>
-                        </v-col>
-                        <v-col cols="2"></v-col>
-                    </v-row>
+ 
                 </v-container>
             </v-app>
         </div>
