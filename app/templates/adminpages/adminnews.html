@@ -28,7 +28,7 @@
                         <v-row>
                             <v-col cols="2"></v-col>
                             <v-col cols="8">
-                                <div style="text-align: center;"><v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'newnews' %}">Dodaj nowy post</v-btn></div>
+                                <v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'newnews' %}">Dodaj nowy post</v-btn>
                             </v-col>
                             <v-col cols="2"></v-col>
                         </v-row>
@@ -40,12 +40,16 @@
                                         <th>Tytuł</th>
                                         <th>Treść</th>
                                         <th>Data dodania</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                     {% for new in news %}
                                     <tr>
                                         <td>{{new.title}}</td>
                                         <td>{{new.content}}</td>
                                         <td>{{new.date}}</td>
+                                        <td><button><a href="adminnews/render_news_delete/{{new.ID}}" class="btn btn-danger">Usuń</a></button></td>
+                                        <td><button><a href="adminnews/newsupdate/{{new.ID}}" class="btn btn-warning">Edytuj</a></button></td>
                                     </tr>
                                     {% endfor %}
                                 </table>
