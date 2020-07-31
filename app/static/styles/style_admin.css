@@ -54,6 +54,11 @@ td, th
     opacity: 1;
 }
 
+td.content
+{
+    text-align: justify;
+}
+
 .thumbnail
 {
     max-width: 130px;
@@ -68,6 +73,5 @@ i.icons
 
 i.icons:hover
 {
-    text-decoration: none;
     color: grey;
 }
