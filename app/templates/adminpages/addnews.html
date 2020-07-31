@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="pl">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'styles/style_admin.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <v-app class="myFont">
+                <div>
+                    <v-toolbar color="rgba(60, 200, 100, 1)">       
+                        <v-toolbar-title><v-btn color="rgba(60, 200, 100, 1)" href="{% url 'admin' %}">Panel administracyjny</v-btn></v-toolbar-title>
+                        <v-spacer></v-spacer>
+                    </v-toolbar>
+                </div>
+                <br/><br/>
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="4"></v-col>
+                        <v-col cols="4">
+                            <v-card>
+                                <div class="banner">
+                                    <div class="container">
+                                        <div class="banner-content">
+                                            <form method = 'POST' enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <table>
+                                                    {% for new in addnews %}
+                                                    <tr>
+                                                        <td>{{ new }}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </table>
+                                                <br/>
+                                                <div style="border-top: 1px solid; height: 20px;"></div>
+                                                <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Zapisz</v-btn>  
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </v-card>
+                        </v-col>
+                        <v-col cols="4"></v-col>
+                    </v-row>
+                </v-container>
+            </v-app>
+        </div>
+    </body>
+</html>
+
+<script>
+var app = new Vue({
+  delimiters: ["[[", "]]"],
+  el: '#app',
+  vuetify: new Vuetify(),
+  data: {
+    message: 'Hello'
+  },
+});
+
+</script>

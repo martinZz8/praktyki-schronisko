@@ -1,4 +1,4 @@
-from .models import Admin, Animal, Application, News, Photo
+from app.model.models import Admin, Animal, Application, News, Photo
 from django.forms import ModelForm
 from django import forms
 
@@ -26,3 +26,8 @@ class PhotoCreate (forms.ModelForm):
     class Meta:
         model = Photo
         fields = '__all__'
+
+class New_Create(forms.ModelForm):
+     class Meta:
+         model=News
+         fields=( 'title', 'content')

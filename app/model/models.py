@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from django.utils import timezone
 
 class Admin(models.Model):
     login = models.CharField(max_length=30)
@@ -18,6 +18,7 @@ class Admin(models.Model):
 
 
 class Animal(models.Model):
+    ID = models.AutoField(primary_key=True)
     name = models.CharField(max_length=25, blank=True, null=True)
     age = models.CharField(max_length=20)
     sex = models.CharField(max_length=10)
@@ -36,20 +37,23 @@ class Animal(models.Model):
 
 
 class Application(models.Model):
+    ID = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=30)
     email = models.CharField(max_length=40)
     info = models.TextField(blank=True, null=True)
     animal = models.ForeignKey(Animal, models.DO_NOTHING)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now)
 
     class Meta:
         managed = True
         db_table = 'application'
 
 class News(models.Model):
+    ID = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=60)
     content = models.TextField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now)
 
     class Meta:
         managed = True
@@ -58,6 +62,7 @@ class News(models.Model):
 
 
 class Photo(models.Model):
+    ID = models.AutoField(primary_key=True)
     animal = models.ForeignKey(Animal, models.DO_NOTHING, blank=True, null=True)
     image = models.ImageField(upload_to = 'image', blank=True)
     thumbnail = models.BooleanField(default = False)
