@@ -7,6 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'styles/style_admin.css' %}">
+        <link rel="stylesheet" href="{% static 'fontello/css/fontello.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
@@ -48,8 +49,8 @@
                                         <td>{{new.title}}</td>
                                         <td>{{new.content}}</td>
                                         <td>{{new.date}}</td>
-                                        <td><button><a href="adminnews/render_news_delete/{{new.ID}}" class="btn btn-danger">Usuń</a></button></td>
-                                        <td><button><a href="adminnews/newsupdate/{{new.ID}}" class="btn btn-warning">Edytuj</a></button></td>
+                                        <td><button><a href="adminnews/render_news_delete/{{new.ID}}" class="btn btn-danger"><i class="icon-trash icons"></i></a></button></td>
+                                        <td><button><a href="adminnews/newsupdate/{{new.ID}}" class="btn btn-warning"><i class="icon-pencil icons"></i></a></button></td>
                                     </tr>
                                     {% endfor %}
                                 </table>

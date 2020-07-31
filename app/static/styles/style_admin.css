@@ -44,3 +44,15 @@ td, th
     max-width: 130px;
     max-height: 130px;
 }
+
+i.icons
+{
+    text-decoration: none;
+    color: white;
+}
+
+i.icons:hover
+{
+    text-decoration: none;
+    color: grey;
+}
