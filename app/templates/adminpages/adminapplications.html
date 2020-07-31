@@ -23,34 +23,29 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                 </div>
-                <v-img src="/static/images/background_adminnews.jpg">
+                <v-img src="/static/images/grass.jpg">
                     <br/><br/>
                     <v-container fluid>
                         <v-row>
                             <v-col cols="2"></v-col>
                             <v-col cols="8">
-                                <v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'newnews' %}">Dodaj nowy post</v-btn>
-                            </v-col>
-                            <v-col cols="2"></v-col>
-                        </v-row>
-                        <v-row>
-                            <v-col cols="2"></v-col>
-                            <v-col cols="8">
                                 <table class="formtable">
                                     <tr>
-                                        <th>Tytuł</th>
-                                        <th>Treść</th>
+                                        <th>Dane aplikanta</th>
+                                        <th>Email</th>
+                                        <th>Zwierzę</th>
+                                        <th>Powód aplikacji</th>
                                         <th>Data dodania</th>
                                         <th></th>
-                                        <th></th>
                                     </tr>
-                                    {% for new in news %}
+                                    {% for app in applications %}
                                     <tr>
-                                        <td>{{new.title}}</td>
-                                        <td align='justify'>{{new.content}}</td>
-                                        <td>{{new.date}}</td>
-                                        <td><button><a href="adminnews/newsdelete/{{new.ID}}" class="btn btn-danger"><i class="icon-trash icons"></i></a></button></td>
-                                        <td><button><a href="adminnews/newsupdate/{{new.ID}}" class="btn btn-warning"><i class="icon-pencil icons"></i></a></button></td>
+                                        <td>{{app.name}} {{app.surname}}</td>
+                                        <td>{{app.email}}</td>
+                                        <td>{{app.animal.name}}</td>
+                                        <td align='justify'>{{app.info}}</td>
+                                        <td>{{app.date}}</td>
+                                        <td><button><a href="adminapplications/appdelete/{{app.ID}}" class="btn btn-danger"><i class="icon-trash icons"></i></a></button></td>
                                     </tr>
                                     {% endfor %}
                                 </table>

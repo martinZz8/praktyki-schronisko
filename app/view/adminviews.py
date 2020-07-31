@@ -1,21 +1,14 @@
 from django.shortcuts import render
-from app.model.models import Photo, Animal, News
+from app.model.models import Photo, Animal, News, Application
 from app.controller.photo_controller import image, images_list, get_thumbnail, get_thumbnails_urls
-from app.controller.news_controller import get_all_news
-from app.controller.animals_controller import get_all_animals
-from app.forms import New_Create
+from app.controller.news_controller import get_all_news, get_news_by_id
+from app.controller.animals_controller import get_all_animals, get_animal_by_id
+from app.controller.applications_controller import get_all_app, get_app_by_id
+from app.forms import New_Create, Animal_Create
 import requests
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-
-from django.views.decorators.cache import cache_page
-from django.views.decorators.csrf import csrf_protect
-import json
-from django.conf import settings
-from django.conf.urls import url
-from django.contrib import messages
-
 
 def render_thumbnail(request):
     image_file = get_thumbnail(request, 1)
@@ -49,7 +42,7 @@ def render_news_delete(request, id_news):
 def render_news_update(request, id_news):
     id_news = int(id_news)
     try:
-        news = News.objects.get(ID = id_news)
+        news = get_news_by_id(request, id_news)
     except News.DoesNotExist:
         return redirect('adminnews')
     news_form = New_Create(request.POST or None, instance = news)
@@ -57,3 +50,44 @@ def render_news_update(request, id_news):
        news_form.save()
        return redirect('adminnews')
     return render(request, 'adminpages/addnews.html', {'addnews':news_form})
+
+def render_adminapplications(request):
+    app=get_all_app(request)
+    return render(request, 'adminpages/adminapplications.html', {'applications':app})
+
+def render_app_delete(request, id_app):
+    id_app = int(id_app)
+    try:
+        app = get_app_by_id(request, id_app)
+    except Application.DoesNotExist:
+        return redirect('applications')
+    app.delete()
+    return redirect('applications')
+
+def render_addanimal(request):
+    form = Animal_Create(request.POST or None)
+    if form.is_valid():
+       form.save()
+       return redirect('animals')
+    return render(request, 'adminpages/addanimal.html', {'addanimal':form})
+
+def render_animal_delete(request, id_animal):
+    id_animal = int(id_animal)
+    try:
+        animal = Animal.objects.get(ID = id_animal)
+    except Animal.DoesNotExist:
+        return redirect('animals')
+    animal.delete()
+    return redirect('animals')
+
+def render_animal_update(request, id_animal):
+    id_animal = int(id_animal)
+    try:
+        animal = get_animal_by_id(request, id_animal)
+    except Animal.DoesNotExist:
+        return redirect('animals')
+    animal_form = Animal_Create(request.POST or None, instance = animal)
+    if animal_form.is_valid():
+       animal_form.save()
+       return redirect('animals')
+    return render(request, 'adminpages/addanimal.html', {'addanimal':animal_form})
