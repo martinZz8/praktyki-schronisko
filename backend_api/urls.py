@@ -24,10 +24,17 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.render_base, name='base'),
     path('test2/',views.rendertest2, name='images'),
+
     path('adminpage/', adminviews.render_thumbnail, name='admin'),
+
     path('adminpage/adminanimals', adminviews.render_adminanimals, name='animals'),
+
     path('adminpage/adminnews', adminviews.render_adminnews, name='adminnews'),
     path('adminpage/adminnews/newnews', adminviews.render_addnews, name='newnews'),
-    path('adminpage/adminnews/render_news_delete/<int:id_news>', adminviews.render_news_delete),
+    path('adminpage/adminnews/newsdelete/<int:id_news>', adminviews.render_news_delete),
     path('adminpage/adminnews/newsupdate/<int:id_news>', adminviews.render_news_update, name='newsupdate'),
+
+    path('adminpage/adminapplications', adminviews.render_adminapplications, name='applications'),
+    path('adminpage/adminapplications/appdelete/<int:id_app>', adminviews.render_app_delete),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

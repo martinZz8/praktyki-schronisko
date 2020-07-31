@@ -25,8 +25,26 @@
                 </div>
                     <v-img src="/static/images/background_adminpage.jpg">
                 <div>
-                    <v-btn color="rgba(60, 200, 100, 0.8)" small min-height="200px" max-width="200px" class="ma-3" href="{% url 'animals' %}">Zarządzaj zwierzętami</v-btn>
-                    <v-btn color="rgba(60, 200, 100, 0.8)" small min-height="200px" max-width="200px" class="ma-3" href="{% url 'adminnews' %}">Zarządzaj postami</v-btn>
+                </br></br></br></br>
+                <v-row>
+                    <v-col cols="3"></v-col>
+                    <v-col>
+                        <v-row>
+                            <v-col cols="12">
+                                <v-btn block color="rgba(60, 200, 100, 0.8)" small min-height="200px" href="{% url 'animals' %}">Zarządzaj zwierzętami</v-btn>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="6">
+                                <v-btn block color="rgba(60, 200, 100, 0.8)" small min-height="200px" href="{% url 'adminnews' %}">Zarządzaj postami</v-btn>
+                            </v-col>
+                            <v-col cols="6">
+                                <v-btn block color="rgba(60, 200, 100, 0.8)" small min-height="200px" href="{% url 'applications' %}">Zarządzaj aplikacjami</v-btn>
+                            </v-col>
+                        </v-row>
+                    </v-col>
+                    <v-col cols="3"></v-col>
+                </v-row>
                 </div>
                 <br><br/>
             </v-img>
