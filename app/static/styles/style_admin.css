@@ -10,12 +10,21 @@ html, .myFont
     font-size: 20px;
 }
 
+.addtable
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-collapse: collapse;
+    color: "rgb(255, 255, 255, 0.5)";
+}
+
 table, td, th
 {
     border:inset 1px #000;
 }
 
-table
+.formtable
 {
     margin-left: auto;
     margin-right: auto;
@@ -29,6 +38,12 @@ table
 th
 {
     background-color:#0E1116; 
+}
+
+.myth
+{
+    background-color:#FFF;
+    opacity: 0.8;
 }
 
 td, th

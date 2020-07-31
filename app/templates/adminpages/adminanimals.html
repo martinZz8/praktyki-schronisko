@@ -29,16 +29,25 @@
                             <v-row>
                                 <v-col cols="2"></v-col>
                                 <v-col cols="8">
-                                    <table>
+                                    <v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'addanimal' %}">Dodaj zwierzę</v-btn>
+                                </v-col>
+                                <v-col cols="2"></v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col cols="2"></v-col>
+                                <v-col cols="8">
+                                    <table class="formtable">
                                         <tr>
                                             <th>Zdjęcie</th>
                                             <th>Imię</th>
                                             <th>Wiek</th>
                                             <th>Płeć</th>
                                             <th>Rasa</th>
-                                            <th>Wielkość</th>
+                                            <th>Rodzaj (pies, kot)</th>
                                             <th>Data przybycia</th>
                                             <th>Opis</th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                         {% load index %}
                                         {% for animal in animals %}
@@ -51,6 +60,8 @@
                                             <td>{{animal.type}}</td>
                                             <td>{{animal.entered}}</td>
                                             <td align='justify'>{{animal.description}}</td>
+                                            <td><button><a href="adminanimals/animaldelete/{{animal.ID}}" class="btn btn-danger"><i class="icon-trash icons"></i></a></button></td>
+                                            <td><button><a href="adminanimals/animalupdate/{{animal.ID}}" class="btn btn-warning"><i class="icon-pencil icons"></i></a></button></td>
                                         </tr>
                                         {% endfor %}
                                     </table>

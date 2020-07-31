@@ -2,9 +2,9 @@ from django.shortcuts import render
 from app.model.models import Photo, Animal, News, Application
 from app.controller.photo_controller import image, images_list, get_thumbnail, get_thumbnails_urls
 from app.controller.news_controller import get_all_news, get_news_by_id
-from app.controller.animals_controller import get_all_animals
+from app.controller.animals_controller import get_all_animals, get_animal_by_id
 from app.controller.applications_controller import get_all_app, get_app_by_id
-from app.forms import New_Create
+from app.forms import New_Create, Animal_Create
 import requests
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -63,3 +63,31 @@ def render_app_delete(request, id_app):
         return redirect('applications')
     app.delete()
     return redirect('applications')
+
+def render_addanimal(request):
+    form = Animal_Create(request.POST or None)
+    if form.is_valid():
+       form.save()
+       return redirect('animals')
+    return render(request, 'adminpages/addanimal.html', {'addanimal':form})
+
+def render_animal_delete(request, id_animal):
+    id_animal = int(id_animal)
+    try:
+        animal = Animal.objects.get(ID = id_animal)
+    except Animal.DoesNotExist:
+        return redirect('animals')
+    animal.delete()
+    return redirect('animals')
+
+def render_animal_update(request, id_animal):
+    id_animal = int(id_animal)
+    try:
+        animal = get_animal_by_id(request, id_animal)
+    except Animal.DoesNotExist:
+        return redirect('animals')
+    animal_form = Animal_Create(request.POST or None, instance = animal)
+    if animal_form.is_valid():
+       animal_form.save()
+       return redirect('animals')
+    return render(request, 'adminpages/addanimal.html', {'addanimal':animal_form})

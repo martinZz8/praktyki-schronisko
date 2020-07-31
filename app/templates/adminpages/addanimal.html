@@ -23,7 +23,7 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                 </div>
-                <v-img src="/static/images/background_addnews.jpg">
+                <v-img src="/static/images/background_addanimals.jpg">
                     <br/><br/>
                     <v-container fluid>
                         <v-row>
@@ -36,10 +36,10 @@
                                                 <form method = 'POST' enctype="multipart/form-data">
                                                     {% csrf_token %}
                                                     <table class="addtable">
-                                                        {% for new in addnews %}
+                                                        {% for animal in addanimal %}
                                                         <tr>
-                                                            <th class="myth">{{ new.label }}</th>
-                                                            <td>{{ new }}</td>
+                                                            <th class="myth">{{ animal.label }}</th>
+                                                            <td>{{ animal }}</td>
                                                         </tr>
                                                         {% endfor %}
                                                     </table>
