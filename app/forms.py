@@ -78,3 +78,8 @@ class Animal_Create(forms.ModelForm):
           "description": "Opis",
           "race": "Rasa"
          }
+
+class Photo_create(forms.ModelForm):
+    class Meta:
+         model=Photo
+         fields=('image', 'thumbnail',)

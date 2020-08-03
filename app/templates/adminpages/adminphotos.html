@@ -27,7 +27,7 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="green darken-1" text v-bind:href="'adminanimals/animaldelete/'+[[act_id]]">Usuń</v-btn>
+                            <v-btn color="green darken-1" text v-bind:href="'photodelete/'+[[act_id]]">Usuń</v-btn>
                             <v-btn color="green darken-1" text @click="delete_confirm = false">Anuluj</v-btn>
                         </v-card-actions>
                     </v-card>
@@ -38,45 +38,34 @@
                         <v-spacer></v-spacer>
                     </v-toolbar>
                 </div>
-                <v-img src="/static/images/background_admin_animals.jpg">
+                <v-img src="/static/images/background_adminphotos.jpg">
                     <br/><br/>
                         <v-container fluid>
                             <v-row>
                                 <v-col cols="2"></v-col>
                                 <v-col cols="8">
-                                    <v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'addanimal' %}">Dodaj zwierzę</v-btn>
+                                    <v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'addanimal' %}">Dodaj zdjęcie</v-btn>
+                                    <table class="addtable">
+                                        {% for p in form_photo %}
+                                        <tr>
+                                            <td>{{ p }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
                                 </v-col>
                                 <v-col cols="2"></v-col>
                             </v-row>
                             <v-row>
                                 <v-col cols="2"></v-col>
                                 <v-col cols="8">
-                                    <table class="formtable">
-                                        <tr>
-                                            <th>Zdjęcie</th>
-                                            <th>Imię</th>
-                                            <th>Wiek</th>
-                                            <th>Płeć</th>
-                                            <th>Rasa</th>
-                                            <th>Rodzaj (pies, kot)</th>
-                                            <th>Data przybycia</th>
-                                            <th>Opis</th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
+                                    <table class="phototable">
                                         {% load index %}
-                                        {% for animal in animals %}
+                                        {% for photo in photos %}
                                         <tr>
-                                            <td><img class="thumbnail" src="{{ thumbnails|index:forloop.counter0 }}"/></td>
-                                            <td>{{animal.name}}</td>
-                                            <td>{{animal.age}}</td>
-                                            <td>{{animal.sex}}</td>
-                                            <td>{{animal.race}}</td>
-                                            <td>{{animal.type}}</td>
-                                            <td>{{animal.entered}}</td>
-                                            <td class="content">{{animal.description}}</td>
-                                            <td><a @click="saveActId({{animal.ID}})"><i class="icon-trash icons"></i></a></td>
-                                            <td><a href="adminanimals/animalupdate/{{animal.ID}}"><i class="icon-pencil icons"></i></a></td>
+                                            <td><img class="adminphoto" src="{{ photo.image.url }}"/></td>
+                                            <td>
+                                                <a @click="saveActId({{photo.ID}})"><i class="icon-trash icons"></i></a>
+                                            </td>
                                         </tr>
                                         {% endfor %}
                                     </table>

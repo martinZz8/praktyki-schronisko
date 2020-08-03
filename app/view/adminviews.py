@@ -4,7 +4,7 @@ from app.controller.photo_controller import image, images_list, get_thumbnail, g
 from app.controller.news_controller import get_all_news, get_news_by_id
 from app.controller.animals_controller import get_all_animals, get_animal_by_id
 from app.controller.applications_controller import get_all_app, get_app_by_id
-from app.forms import New_Create, Animal_Create
+from app.forms import New_Create, Animal_Create, Photo_create
 import requests
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -91,3 +91,20 @@ def render_animal_update(request, id_animal):
        animal_form.save()
        return redirect('animals')
     return render(request, 'adminpages/addanimal.html', {'addanimal':animal_form})
+
+def render_admin_photos(request, id_animal):
+    photos=images_list(request, id_animal)
+    form_photo = Photo_create(request.POST or None)
+    if form_photo.is_valid():
+       form_photo.save()
+       return redirect('adminphotos', id_animal=id_animal)
+    return render(request, 'adminpages/adminphotos.html', {'photos':photos}, {'form_photo':form_photo})
+
+def render_photo_delete(request, id_photo):
+    id_photo = int(id_photo)
+    try:
+        photo = image(request, id_photo)
+    except Photo.DoesNotExist:
+        return redirect('adminphotos', id_animal = photo.animal.ID)
+    photo.delete()
+    return redirect('adminphotos', id_animal = photo.animal.ID)
