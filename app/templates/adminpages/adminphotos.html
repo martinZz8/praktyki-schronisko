@@ -63,7 +63,6 @@
                                             <th>Opis</th>
                                             <th></th>
                                             <th></th>
-                                            <th></th>
                                         </tr>
                                         {% load index %}
                                         {% for animal in animals %}
@@ -78,7 +77,6 @@
                                             <td class="content">{{animal.description}}</td>
                                             <td><a @click="saveActId({{animal.ID}})"><i class="icon-trash icons"></i></a></td>
                                             <td><a href="adminanimals/animalupdate/{{animal.ID}}"><i class="icon-pencil icons"></i></a></td>
-                                            <td><a href="adminanimals/animalupdate/{{animal.ID}}"><i class="icon-mail icons"></i></a></td>
                                         </tr>
                                         {% endfor %}
                                     </table>
