@@ -47,10 +47,12 @@ ANIMAL_SEX_CHOICES = (
     ('Samica', 'samica')
 )
 
+current_year = datetime.datetime.now().year
+
 class Animal_Create(forms.ModelForm):
 
     entered = forms.DateField(  
-        widget=forms.SelectDateWidget,
+        widget=forms.SelectDateWidget(years = range(current_year - 2, current_year + 1)),
         initial=datetime.date.today,
         label="Data przybycia"
     )
