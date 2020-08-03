@@ -17,8 +17,23 @@
     <body>
         <div id="app">
             <v-app class="myFont">
+                <v-dialog v-model="delete_confirm" max-width="330px">
+                    <v-card>
+                        <v-card-title class="headline grey lighten-2">
+                            Potwierdzenie usunięcia
+                        </v-card-title>
+                        <v-card-text>
+                            Czy na pewno chcesz usunąć ten element?
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green darken-1" text v-bind:href="'adminnews/newsdelete/'+[[act_id]]">Usuń</v-btn>
+                            <v-btn color="green darken-1" text @click="delete_confirm = false">Anuluj</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
                 <div>
-                    <v-toolbar color="rgba(60, 200, 100, 1)">       
+                    <v-toolbar color="rgba(60, 200, 100, 1)"> 
                         <v-toolbar-title><v-btn color="rgba(60, 200, 100, 1)" href="{% url 'admin' %}">Panel administracyjny</v-btn></v-toolbar-title>
                         <v-spacer></v-spacer>
                     </v-toolbar>
@@ -47,10 +62,10 @@
                                     {% for new in news %}
                                     <tr>
                                         <td>{{new.title}}</td>
-                                        <td align='justify'>{{new.content}}</td>
+                                        <td class="content">{{new.content}}</td>
                                         <td>{{new.date}}</td>
-                                        <td><button><a href="adminnews/newsdelete/{{new.ID}}" class="btn btn-danger"><i class="icon-trash icons"></i></a></button></td>
-                                        <td><button><a href="adminnews/newsupdate/{{new.ID}}" class="btn btn-warning"><i class="icon-pencil icons"></i></a></button></td>
+                                        <td><a @click="saveActId({{new.ID}})"><i class="icon-trash icons"></i></a></td>
+                                        <td><a href="adminnews/newsupdate/{{new.ID}}"><i class="icon-pencil icons"></i></a></td>
                                     </tr>
                                     {% endfor %}
                                 </table>
@@ -70,8 +85,15 @@ var app = new Vue({
   el: '#app',
   vuetify: new Vuetify(),
   data: {
-    message: 'Hello'
+    delete_confirm: false,
+    act_id: ''
   },
+  methods: {
+    saveActId(id) {
+        this.delete_confirm = true;
+        this.act_id = id;
+    }
+  }
 });
 
 </script>

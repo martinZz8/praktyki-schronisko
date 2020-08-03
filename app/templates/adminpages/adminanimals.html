@@ -17,6 +17,21 @@
     <body>
         <div id="app">
             <v-app class="myFont">
+                <v-dialog v-model="delete_confirm" max-width="330px">
+                    <v-card>
+                        <v-card-title class="headline grey lighten-2">
+                            Potwierdzenie usunięcia
+                        </v-card-title>
+                        <v-card-text>
+                            Czy na pewno chcesz usunąć ten element?
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green darken-1" text v-bind:href="'adminanimals/animaldelete/'+[[act_id]]">Usuń</v-btn>
+                            <v-btn color="green darken-1" text @click="delete_confirm = false">Anuluj</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
                 <div>
                     <v-toolbar color="rgba(60, 200, 100, 1)">       
                         <v-toolbar-title><v-btn color="rgba(60, 200, 100, 1)" href="{% url 'admin' %}">Panel administracyjny</v-btn></v-toolbar-title>
@@ -59,9 +74,9 @@
                                             <td>{{animal.race}}</td>
                                             <td>{{animal.type}}</td>
                                             <td>{{animal.entered}}</td>
-                                            <td align='justify'>{{animal.description}}</td>
-                                            <td><button><a href="adminanimals/animaldelete/{{animal.ID}}" class="btn btn-danger"><i class="icon-trash icons"></i></a></button></td>
-                                            <td><button><a href="adminanimals/animalupdate/{{animal.ID}}" class="btn btn-warning"><i class="icon-pencil icons"></i></a></button></td>
+                                            <td class="content">{{animal.description}}</td>
+                                            <td><a @click="saveActId({{animal.ID}})"><i class="icon-trash icons"></i></a></td>
+                                            <td><a href="adminanimals/animalupdate/{{animal.ID}}"><i class="icon-pencil icons"></i></a></td>
                                         </tr>
                                         {% endfor %}
                                     </table>
@@ -81,8 +96,15 @@ var app = new Vue({
   el: '#app',
   vuetify: new Vuetify(),
   data: {
-    message: 'Hello'
+    delete_confirm: false,
+    act_id: ''
   },
+  methods: {
+    saveActId(id) {
+        this.delete_confirm = true;
+        this.act_id = id;
+    }
+  }
 });
 
 </script>

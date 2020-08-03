@@ -24,7 +24,6 @@
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
-  speak: never;
  
   display: inline-block;
   text-decoration: inherit;
@@ -55,16 +54,16 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-cloud:before { content: '\e800'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-pencil:before { content: '\e801'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-trash:before { content: '\e802'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-location:before { content: '\e803'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-heart-filled:before { content: '\e804'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-users:before { content: '\e805'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-mail:before { content: '\e806'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-search:before { content: '\e807'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-home:before { content: '\e808'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-youtube-play:before { content: '\f16a'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-twitter:before { content: '\f309'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-facebook:before { content: '\f30c'; font-size: 20px; margin-top: 10px} /* '' */
-.icon-linkedin:before { content: '\f318'; font-size: 20px; margin-top: 10px} /* '' */
+.icon-cloud:before { content: '\e800'; font-size: 20px} /* '' */
+.icon-pencil:before { content: '\e801'; font-size: 20px} /* '' */
+.icon-trash:before { content: '\e802'; font-size: 20px} /* '' */
+.icon-location:before { content: '\e803'; font-size: 20px} /* '' */
+.icon-heart-filled:before { content: '\e804'; font-size: 20px} /* '' */
+.icon-users:before { content: '\e805'; font-size: 20px} /* '' */
+.icon-mail:before { content: '\e806'; font-size: 20px} /* '' */
+.icon-search:before { content: '\e807'; font-size: 20px} /* '' */
+.icon-home:before { content: '\e808'; font-size: 20px} /* '' */
+.icon-youtube-play:before { content: '\f16a'; font-size: 20px} /* '' */
+.icon-twitter:before { content: '\f309'; font-size: 20px} /* '' */
+.icon-facebook:before { content: '\f30c'; font-size: 20px} /* '' */
+.icon-linkedin:before { content: '\f318'; font-size: 20px}; /* '' */
