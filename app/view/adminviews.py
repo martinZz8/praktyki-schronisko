@@ -98,7 +98,7 @@ def render_admin_photos(request, id_animal):
     if form_photo.is_valid():
        form_photo.save()
        return redirect('adminphotos', id_animal=id_animal)
-    return render(request, 'adminpages/adminphotos.html', {'photos':photos}, {'form_photo':form_photo})
+    return render(request, 'adminpages/adminphotos.html', {'photos':photos, 'form_photo':form_photo})
 
 def render_photo_delete(request, id_photo):
     id_photo = int(id_photo)
