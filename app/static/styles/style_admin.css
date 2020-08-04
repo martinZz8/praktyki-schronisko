@@ -3,6 +3,34 @@ html, .myFont
     font-size: 15px;
 }
 
+ul.admin_menu > li
+{
+    list-style-type: none;
+    float: left;
+}
+
+ul.admin_menu > li > a:hover
+{
+    background-color: rgba(0,0,0,0.1);
+}
+
+ul.admin_menu > li:last-child
+{
+    border-right: none;
+}
+
+a.admin_menu
+{
+    color: black !important;
+    height: 64px;
+    padding-top: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
+}
+
 .v-toolbar__title > .v-btn
 {
     font-weight: 900;
@@ -45,7 +73,7 @@ table, td, th
 
 th
 {
-    background-color:#0E1116; 
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .myth

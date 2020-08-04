@@ -35,6 +35,11 @@
                     <v-toolbar color="rgba(60, 200, 100, 1)">       
                         <v-toolbar-title><v-btn color="rgba(60, 200, 100, 1)" href="{% url 'admin' %}">Panel administracyjny</v-btn></v-toolbar-title>
                         <v-spacer></v-spacer>
+                        <ul class="admin_menu">
+                            <li><a class="admin_menu" href="{% url 'animals' %}">Zarządzaj zwierzętami</a></li>
+                            <li><a class="admin_menu" href="{% url 'adminnews' %}">Zarządzaj postami</a></li>
+                            <li><a class="admin_menu" href="{% url 'applications' %}">Zarządzaj aplikacjami</a></li>
+                        </ul>
                     </v-toolbar>
                 </div>
                 <v-img src="/static/images/background_admin_animals.jpg">
@@ -60,7 +65,7 @@
                                             <th>Rodzaj (pies, kot)</th>
                                             <th>Data przybycia</th>
                                             <th>Opis</th>
-                                            <th></th>
+                                            <th>Opcje</th>
                                         </tr>
                                         {% load index %}
                                         {% for animal in animals %}
@@ -77,7 +82,7 @@
                                         </tr>
                                         <tr><td><a href="adminanimals/animalupdate/{{animal.ID}}"><i class="icon-pencil icons"></i></a></td></tr>
                                         <tr><td><a href="adminanimals/adminphotos/{{animal.ID}}"><i class="icon-picture icons"></i></a></td></tr>
-                                        <tr><td><v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'addanimal' %}">Wybierz miniaturę</v-btn></td></tr>
+                                        <tr><td><v-btn block color="rgba(60, 200, 100, 0.8)" small href="adminanimals/selectthumbnail/{{animal.ID}}">Wybierz miniaturę</v-btn></td></tr>
                                         {% endfor %}
                                     </table>
                                 </v-col>

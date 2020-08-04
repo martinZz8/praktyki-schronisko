@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from app.model.models import Photo, Animal, News, Application
-from app.controller.photo_controller import image, images_list, get_thumbnail, get_thumbnails_urls
+from app.controller.photo_controller import image, images_list, get_thumbnail, get_thumbnails_urls, change_thumbnail
 from app.controller.news_controller import get_all_news, get_news_by_id
 from app.controller.animals_controller import get_all_animals, get_animal_by_id
 from app.controller.applications_controller import get_all_app, get_app_by_id
@@ -93,12 +93,21 @@ def render_animal_update(request, id_animal):
     return render(request, 'adminpages/addanimal.html', {'addanimal':animal_form})
 
 def render_admin_photos(request, id_animal):
+    id_animal = int(id_animal)
     photos=images_list(request, id_animal)
-    form_photo = Photo_create(request.POST or None)
-    if form_photo.is_valid():
-       form_photo.save()
-       return redirect('adminphotos', id_animal=id_animal)
-    return render(request, 'adminpages/adminphotos.html', {'photos':photos, 'form_photo':form_photo})
+    if request.method == "POST": 
+            form = Photo_create(request.POST, request.FILES) 
+            if form.is_valid():
+                animal=get_animal_by_id(request, id_animal)
+                image = form.cleaned_data.get("img") 
+                obj = Photo.objects.create( 
+                                    animal = animal,  
+                                    image = image 
+                                    ) 
+                obj.save()
+    else: 
+        form = Photo_create()
+    return render(request, 'adminpages/adminphotos.html', {'photos':photos, 'form_photo':form})
 
 def render_photo_delete(request, id_photo):
     id_photo = int(id_photo)
@@ -108,3 +117,11 @@ def render_photo_delete(request, id_photo):
         return redirect('adminphotos', id_animal = photo.animal.ID)
     photo.delete()
     return redirect('adminphotos', id_animal = photo.animal.ID)
+
+def render_select_thumbnail(request, id_animal):
+    photos=images_list(request, id_animal)
+    return render(request, 'adminpages/selectthumbnail.html', {'photos':photos})
+
+def render_change_thumbnail(request, id_photo):
+    change_thumbnail(request, id_photo)
+    return redirect('animals')

@@ -6,7 +6,7 @@ def image(request, p_key):
 
 def images_list(request, f_key):
     image_file = []
-    image_file = Photo.objects.filter(animal=f_key)
+    image_file = Photo.objects.filter(animal=f_key).order_by('pk')
     return image_file
 
 def get_thumbnail(request, f_key):
@@ -21,3 +21,10 @@ def get_thumbnails_urls(request, animals):
     for animal in animals:
         thumbnails_urls.append(get_thumbnail(request, animal.ID))
     return thumbnails_urls
+
+def change_thumbnail(request, id_photo):
+    id_photo = int(id_photo)
+    thumbnail_photo=Photo.objects.get(pk=id_photo)
+    Photo.objects.filter(animal=thumbnail_photo.animal.ID).exclude(pk = id_photo).update(thumbnail=False)
+    thumbnail_photo.thumbnail=True
+    thumbnail_photo.save()
