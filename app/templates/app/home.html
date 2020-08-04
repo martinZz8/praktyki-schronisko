@@ -1,14 +1,30 @@
 {% extends "app/base.html" %}
 
 {% block content %}
-    <v-container class="header">
+    <v-container fluid class="header">
         <v-row>
-            <v-col class="header">
-                <v-img height="100vh" src="/static/images/tlo1.jpg"></v-img>
+            <v-col clos="12" class="header" id="bg_img_1">
+                <v-container>
+                    <br/><br/>
+                    <v-row align="center" justify="start" style="height: 400px; padding-top: 100px; margin: 0px;">
+                        <v-col cols="auto" class="box_shadow">
+                            <h1>Schronisko dla zwierząt</h1>
+                            <h2 style="padding-bottom: 0px;">Znajdź dla siebie przyjaciela</h2>
+                            <h2 style="padding-top: 0px;">na dobre i na złe</h2>
+                        </v-col>
+                    </v-row>
+                    <v-row justify="start" style="height: 50px; margin: 0px;">
+                        <div style="margin-top: 80px;">
+                            <v-btn href="#" x-large color="rgb(211, 211, 211)" elevation="24" style="color: black!important;">Zaadoptuj mnie</v-btn>
+                        </div>
+                    </v-row>
+                </v-container>
             </v-col>
         </v-row>
-        <v-row>
-            <v-col>
+    </v-container>
+    <v-container fluid style="background-color: aquamarine;">
+        <v-row align="center" justify="start">
+            <v-col cols="4">
                 <p>xd</p>
             </v-col>
         </v-row>
