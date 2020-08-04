@@ -44,7 +44,21 @@
                             <v-row>
                                 <v-col cols="2"></v-col>
                                 <v-col cols="8">
-                                    <v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'addanimal' %}">Dodaj zdjęcie</v-btn>
+                                    <form method = 'POST' enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <table class="addtable">
+                                            {% for p in form_photo %}
+                                            <tr>
+                                                <td>{{ p }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr>
+                                                <td>
+                                                    <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Dodaj zdjęcie</v-btn>  
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
                                 </v-col>
                                 <v-col cols="2"></v-col>
                             </v-row>

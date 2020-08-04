@@ -80,6 +80,7 @@ class Animal_Create(forms.ModelForm):
          }
 
 class Photo_create(forms.ModelForm):
+
     class Meta:
          model=Photo
-         fields=('image', 'thumbnail',)
+         fields=('animal', 'image',)
