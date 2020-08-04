@@ -71,6 +71,8 @@
                                         <td><a @click="saveActId({{new.ID}})"><i class="icon-trash icons"></i></a></td>
                                         <td><a href="adminnews/newsupdate/{{new.ID}}"><i class="icon-pencil icons"></i></a></td>
                                     </tr>
+                                    {% empty %}
+                                    <tr><td colspan="5">Brak postów</td></tr>
                                     {% endfor %}
                                 </table>
                             </v-col>
