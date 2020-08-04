@@ -78,6 +78,8 @@
                                                 <a @click="saveActId({{photo.ID}})"><i class="icon-trash icons"></i></a>
                                             </td>
                                         </tr>
+                                        {% empty %}
+                                        <tr><td colspan="2">Brak zdjęć</td></tr>
                                         {% endfor %}
                                     </table>
                                 </v-col>
