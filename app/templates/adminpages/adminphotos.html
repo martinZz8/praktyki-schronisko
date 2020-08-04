@@ -45,13 +45,6 @@
                                 <v-col cols="2"></v-col>
                                 <v-col cols="8">
                                     <v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'addanimal' %}">Dodaj zdjęcie</v-btn>
-                                    <table class="addtable">
-                                        {% for p in form_photo %}
-                                        <tr>
-                                            <td>{{ p }}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </table>
                                 </v-col>
                                 <v-col cols="2"></v-col>
                             </v-row>
