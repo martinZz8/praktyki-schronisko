@@ -75,8 +75,8 @@ h2
 
 .box_shadow
 {
-    background-color: rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 0px 37px 17px rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 50px 50px rgba(0,0,0,0.8);
 }
 
 #bg_img_1
