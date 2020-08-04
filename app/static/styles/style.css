@@ -22,11 +22,6 @@ ul.menu_list > li > a:hover
     color: white!important;
 }
 
-ul.menu_list > li:last-child
-{
-    border-right: none;
-}
-
 .thumbnail
 {
     max-width: 130px;
@@ -59,4 +54,40 @@ a.menu_list
 {
     background-color: rgba(0,0,0,0.7);
     color: white!important;
+}
+
+h1
+{
+    color: white;
+    font-size: 50px;
+    padding: 15px;
+    padding-bottom: 25px;
+    text-shadow: 0px 0px 6px rgba(0,0,0,0);
+}
+
+h2
+{
+    color: white;
+    font-size: 40px;
+    padding: 15px;
+    text-shadow: 0px 0px 6px rgba(0,0,0,0);
+}
+
+.box_shadow
+{
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 37px 17px rgba(0,0,0,0.8);
+}
+
+#bg_img_1
+{
+    background-image: url("/static/images/tlo1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-attachment: local;
 }
