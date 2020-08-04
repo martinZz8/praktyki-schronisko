@@ -1,6 +1,5 @@
 html, .myFont
 {
-    font-family: 'Ubuntu', sans-serif;
     font-size: 15px;
 }
 
@@ -30,7 +29,17 @@ table, td, th
     margin-right: auto;
     text-align: center;
     border-collapse: collapse;
-    background-color:rgba(31,34,39,0.8);
+    background-color: rgba(31,34,39,0.8);
+    color:#FFF;
+}
+
+.phototable
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-collapse: collapse;
+    background-color:#1F2227;
     color:#FFF;
 }
 
@@ -61,6 +70,12 @@ td.content
 {
     max-width: 130px;
     max-height: 130px;
+}
+
+.adminphoto
+{
+    max-width: 400px;
+    max-height: 400px;
 }
 
 i.icons

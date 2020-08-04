@@ -32,6 +32,9 @@ urlpatterns = [
     path('adminpage/adminanimals/animaldelete/<int:id_animal>', adminviews.render_animal_delete),
     path('adminpage/adminanimals/animalupdate/<int:id_animal>', adminviews.render_animal_update, name='animalupdate'),
 
+    path('adminpage/adminanimals/adminphotos/<int:id_animal>', adminviews.render_admin_photos, name='adminphotos'),
+    path('adminpage/adminanimals/adminphotos/photodelete/<int:id_photo>', adminviews.render_photo_delete, name='photodelete'),
+
     path('adminpage/adminnews', adminviews.render_adminnews, name='adminnews'),
     path('adminpage/adminnews/newnews', adminviews.render_addnews, name='newnews'),
     path('adminpage/adminnews/newsdelete/<int:id_news>', adminviews.render_news_delete),

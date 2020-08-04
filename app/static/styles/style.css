@@ -14,7 +14,6 @@ ul.menu_list > li
 {
     list-style-type: none;
     float: left;
-    border-right: 3px dotted rgba(23, 14, 9, 1);
 }
 
 ul.menu_list > li > a:hover
