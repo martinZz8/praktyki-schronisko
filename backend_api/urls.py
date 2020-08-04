@@ -35,6 +35,9 @@ urlpatterns = [
     path('adminpage/adminanimals/adminphotos/<int:id_animal>', adminviews.render_admin_photos, name='adminphotos'),
     path('adminpage/adminanimals/adminphotos/photodelete/<int:id_photo>', adminviews.render_photo_delete, name='photodelete'),
 
+    path('adminpage/adminanimals/selectthumbnail/<int:id_animal>', adminviews.render_select_thumbnail, name='selectthumbnail'),
+    path('adminpage/adminanimals/selectthumbnail/change/<int:id_photo>', adminviews.render_change_thumbnail, name='changethumbnail'),
+
     path('adminpage/adminnews', adminviews.render_adminnews, name='adminnews'),
     path('adminpage/adminnews/newnews', adminviews.render_addnews, name='newnews'),
     path('adminpage/adminnews/newsdelete/<int:id_news>', adminviews.render_news_delete),

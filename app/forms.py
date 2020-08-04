@@ -79,8 +79,5 @@ class Animal_Create(forms.ModelForm):
           "race": "Rasa"
          }
 
-class Photo_create(forms.ModelForm):
-
-    class Meta:
-         model=Photo
-         fields=('animal', 'image',)
+class Photo_create(forms.Form):
+    img=forms.ImageField()
