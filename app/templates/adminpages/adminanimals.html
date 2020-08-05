@@ -70,7 +70,7 @@
                                         {% load index %}
                                         {% for animal in animals %}
                                         <tr>
-                                            <td rowspan="4"><img class="thumbnail" src="{{ thumbnails|index:forloop.counter0 }}"/></td>
+                                            <td rowspan="4"><img class="thumbnail" src="{% index2 thumbnails animals.number forloop.counter0 %}"/></td>
                                             <td rowspan="4">{{animal.name}}</td>
                                             <td rowspan="4">{{animal.age}}</td>
                                             <td rowspan="4">{{animal.sex}}</td>
@@ -87,6 +87,29 @@
                                         <tr><td colspan="9">Brak zwierząt</td></tr>
                                         {% endfor %}
                                     </table>
+
+                                    {% if animals.has_other_pages %}
+                                    <ul class="pagination">
+                                      {% if animals.has_previous %}
+                                      <li><a href="?page={{ animals.previous_page_number }}"><v-icon color="white" size="20px">mdi-menu-left</v-icon></a></li>
+                                      {% else %}
+                                        <li class="disabled"><v-icon color="white" size="20px">mdi-menu-left</v-icon></li>
+                                      {% endif %}
+                                      {% for i in animals.paginator.page_range %}
+                                        {% if animals.number == i %}
+                                          <li>{{ i }} (obecna strona)</li>
+                                        {% else %}
+                                          <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                      {% endfor %}
+                                      {% if animals.has_next %}
+                                        <li><a href="?page={{ animals.next_page_number }}"><v-icon color="white" size="20px">mdi-menu-right</v-icon></a></li>
+                                      {% else %}
+                                        <li class="disabled"><v-icon color="white" size="20px">mdi-menu-right</v-icon></li>
+                                      {% endif %}
+                                    </ul>
+                                  {% endif %}
+
                                 </v-col>
                                 <v-col cols="2"></v-col>
                             </v-row>

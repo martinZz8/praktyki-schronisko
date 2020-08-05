@@ -117,3 +117,27 @@ i.icons:hover
     color: grey;
 }
 
+ul.pagination
+{
+    text-align: center;
+    margin: 10px;
+}
+
+ul.pagination > li
+{
+    display: inline;
+    list-style-type: none;
+    border: 1px solid black;
+    background-color: rgba(31,34,39,0.8);
+    padding: 2px;
+    padding-bottom: 4px;
+    color: white;
+
+}
+
+ul.pagination > li > a
+{
+    text-decoration: none;
+    color: white;
+}
+
