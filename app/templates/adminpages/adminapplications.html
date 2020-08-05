@@ -70,6 +70,29 @@
                                     <tr><td colspan="6">Brak aplikacji</td></tr>
                                     {% endfor %}
                                 </table>
+
+                                {% if applications.has_other_pages %}
+                                <ul class="pagination">
+                                  {% if applications.has_previous %}
+                                  <li><a href="?page={{ applications.previous_page_number }}"><v-icon color="white" size="20px">mdi-menu-left</v-icon></a></li>
+                                  {% else %}
+                                    <li class="disabled"><v-icon color="white" size="20px">mdi-menu-left</v-icon></li>
+                                  {% endif %}
+                                  {% for i in applications.paginator.page_range %}
+                                    {% if applications.number == i %}
+                                      <li>{{ i }} (obecna strona)</li>
+                                    {% else %}
+                                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% if applications.has_next %}
+                                    <li><a href="?page={{ applications.next_page_number }}"><v-icon color="white" size="20px">mdi-menu-right</v-icon></a></li>
+                                  {% else %}
+                                    <li class="disabled"><v-icon color="white" size="20px">mdi-menu-right</v-icon></li>
+                                  {% endif %}
+                                </ul>
+                              {% endif %}
+
                             </v-col>
                             <v-col cols="2"></v-col>
                         </v-row>
