@@ -19,7 +19,6 @@ def render_adminanimals(request):
     animals=get_all_animals(request)
     thumbnails_urls = get_thumbnails_urls(request, animals)
     page = request.GET.get('page', 1)
-
     paginator = Paginator(animals, 6)
     try:
         animal = paginator.page(page)
@@ -27,7 +26,6 @@ def render_adminanimals(request):
         animal = paginator.page(1)
     except EmptyPage:
         animal = paginator.page(paginator.num_pages)
-
     return render(request, 'adminpages/adminanimals.html', {'animals':animal, 'thumbnails':thumbnails_urls})
 
 def index(request):
@@ -40,6 +38,14 @@ def index(request):
 
 def render_adminnews(request):
     news=get_all_news(request)
+    page = request.GET.get('page', 1)
+    paginator = Paginator(news, 3)
+    try:
+        news = paginator.page(page)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+        news = paginator.page(paginator.num_pages)
     return render(request, 'adminpages/adminnews.html', {'news':news})
 
 def render_addnews(request):
@@ -72,6 +78,14 @@ def render_news_update(request, id_news):
 
 def render_adminapplications(request):
     app=get_all_app(request)
+    page = request.GET.get('page', 1)
+    paginator = Paginator(app, 7)
+    try:
+        app = paginator.page(page)
+    except PageNotAnInteger:
+        app = paginator.page(1)
+    except EmptyPage:
+        app = paginator.page(paginator.num_pages)
     return render(request, 'adminpages/adminapplications.html', {'applications':app})
 
 def render_app_delete(request, id_app):
