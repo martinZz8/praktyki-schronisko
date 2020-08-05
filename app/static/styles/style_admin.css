@@ -141,3 +141,12 @@ ul.pagination > li > a
     color: white;
 }
 
+.addphoto
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-collapse: collapse;
+    background-color: rgba(31,34,39,0.8);
+    color: rgb(5, 212, 33);
+}
