@@ -28,6 +28,29 @@
                     </ul>
                 </v-app-bar>
                 {% block content %}{% endblock %}
+                <v-footer dark padless>
+                    <v-card class="flex" flat tile>
+                        <v-card-title style="background-color: rgb(5,12,15);">
+                            <strong class="subheading">Sprawdź nasze social media!</strong>
+                            <v-spacer></v-spacer>
+                            <v-btn href="#" class="mx-4" dark icon>
+                                <v-icon size="24px">mdi-facebook</v-icon>
+                            </v-btn>
+                            <v-btn href="#" class="mx-4" dark icon>
+                                <v-icon size="24px">mdi-twitter</v-icon>
+                            </v-btn>
+                            <v-btn href="#" class="mx-4" dark icon>
+                                <v-icon size="24px">mdi-youtube</mdi-youtube></v-icon>
+                            </v-btn>
+                            <v-btn href="#" class="mx-4" dark icon>
+                                <v-icon size="24px">mdi-instagram</v-icon>
+                            </v-btn>
+                        </v-card-title>
+                        <v-card-text class="py-2 white--text text-center">
+                            [[ new Date().getFullYear() ]] — <strong>&copy; Schronisko dla Bezdomnych Zwierząt w Rzeszowie</strong>
+                        </v-card-text>
+                    </v-card>
+                </v-footer>
             </v-app>
         </div>
     </body>
@@ -39,7 +62,7 @@ var app = new Vue({
   delimiters: ["[[", "]]"],
   el: '#app',
   vuetify: new Vuetify(),
-  data: {
+  data: { 
   },
 });
 
