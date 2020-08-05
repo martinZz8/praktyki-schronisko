@@ -7,6 +7,8 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.utils import timezone
+from django.dispatch import receiver
+import os
 
 class Admin(models.Model):
     login = models.CharField(max_length=30)
@@ -42,7 +44,7 @@ class Application(models.Model):
     surname = models.CharField(max_length=30)
     email = models.CharField(max_length=40)
     info = models.TextField(blank=True, null=True)
-    animal = models.ForeignKey(Animal, models.DO_NOTHING)
+    animal = models.ForeignKey(Animal, on_delete = models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
 
     class Meta:
@@ -63,10 +65,20 @@ class News(models.Model):
 
 class Photo(models.Model):
     ID = models.AutoField(primary_key=True)
-    animal = models.ForeignKey(Animal, models.DO_NOTHING, blank=True, null=True)
+    animal = models.ForeignKey(Animal, on_delete = models.CASCADE, blank=True, null=True)
     image = models.ImageField(upload_to = 'image', blank=True)
     thumbnail = models.BooleanField(default = False)
 
     class Meta:
         managed = True
         db_table = 'photo'
+
+@receiver(models.signals.post_delete, sender=Photo)
+def auto_delete_file_on_delete(sender, instance, **kwargs):
+    """
+    Deletes file from filesystem
+    when corresponding `MediaFile` object is deleted.
+    """
+    if instance.image:
+        if os.path.isfile(instance.image.path):
+            os.remove(instance.image.path)
