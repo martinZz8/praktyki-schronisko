@@ -76,6 +76,29 @@
                                     <tr><td colspan="5">Brak postów</td></tr>
                                     {% endfor %}
                                 </table>
+
+                                {% if news.has_other_pages %}
+                                <ul class="pagination">
+                                  {% if news.has_previous %}
+                                  <li><a href="?page={{ news.previous_page_number }}"><v-icon color="white" size="20px">mdi-menu-left</v-icon></a></li>
+                                  {% else %}
+                                    <li class="disabled"><v-icon color="white" size="20px">mdi-menu-left</v-icon></li>
+                                  {% endif %}
+                                  {% for i in news.paginator.page_range %}
+                                    {% if news.number == i %}
+                                      <li>{{ i }} (obecna strona)</li>
+                                    {% else %}
+                                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% if news.has_next %}
+                                    <li><a href="?page={{ news.next_page_number }}"><v-icon color="white" size="20px">mdi-menu-right</v-icon></a></li>
+                                  {% else %}
+                                    <li class="disabled"><v-icon color="white" size="20px">mdi-menu-right</v-icon></li>
+                                  {% endif %}
+                                </ul>
+                              {% endif %}
+
                             </v-col>
                             <v-col cols="2"></v-col>
                         </v-row>
