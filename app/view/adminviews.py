@@ -9,6 +9,7 @@ import requests
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def render_thumbnail(request):
     image_file = get_thumbnail(request, 1)
@@ -17,7 +18,25 @@ def render_thumbnail(request):
 def render_adminanimals(request):
     animals=get_all_animals(request)
     thumbnails_urls = get_thumbnails_urls(request, animals)
-    return render(request, 'adminpages/adminanimals.html', {'animals':animals, 'thumbnails':thumbnails_urls})
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(animals, 6)
+    try:
+        animal = paginator.page(page)
+    except PageNotAnInteger:
+        animal = paginator.page(1)
+    except EmptyPage:
+        animal = paginator.page(paginator.num_pages)
+
+    return render(request, 'adminpages/adminanimals.html', {'animals':animal, 'thumbnails':thumbnails_urls})
+
+def index(request):
+    user_list = User.objects.all()
+    page = request.GET.get('page', 1)
+
+    
+
+    return render(request, 'core/user_list.html', { 'users': users })
 
 def render_adminnews(request):
     news=get_all_news(request)

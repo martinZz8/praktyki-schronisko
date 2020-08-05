@@ -30,7 +30,7 @@ ul.menu_list > li > a:hover
 
 .v-app-bar
 {
-    background-color: rgba(255, 255, 255, 0.5)!important;
+    background-color: rgba(185, 148, 77, 0.7)!important;
 }
 
 .v-toolbar__content
@@ -61,6 +61,7 @@ h1
     color: white;
     font-size: 50px;
     padding: 15px;
+    padding-top: 20px;
     padding-bottom: 25px;
     text-shadow: 0px 0px 6px rgba(0,0,0,0);
 }
@@ -73,10 +74,18 @@ h2
     text-shadow: 0px 0px 6px rgba(0,0,0,0);
 }
 
+h3
+{
+    color: black;
+    font-size: 28px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
 .box_shadow
 {
-    background-color: rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 0px 37px 17px rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 50px 50px rgba(0,0,0,0.8);
 }
 
 #bg_img_1
@@ -90,4 +99,19 @@ h2
     width: 100%;
     height: 100vh;
     background-attachment: local;
+}
+
+p.home_text
+{
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: justify;
+    text-decoration: none;
+    font-size: 21px;
+}
+
+.box_border
+{
+    border: 1px solid black;
 }

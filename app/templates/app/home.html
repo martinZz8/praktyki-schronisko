@@ -4,17 +4,17 @@
     <v-container fluid class="header">
         <v-row>
             <v-col clos="12" class="header" id="bg_img_1">
-                <v-container>
+                <v-container fluid>
                     <br/><br/>
-                    <v-row align="center" justify="start" style="height: 400px; padding-top: 100px; margin: 0px;">
+                    <v-row align="center" justify="start" style="height: 400px; padding-top: 100px; margin-left: 90px;">
                         <v-col cols="auto" class="box_shadow">
                             <h1>Schronisko dla zwierząt</h1>
-                            <h2 style="padding-bottom: 0px;">Znajdź dla siebie przyjaciela</h2>
-                            <h2 style="padding-top: 0px;">na dobre i na złe</h2>
+                            <h2>Znajdź dla siebie przyjaciela<br/>na dobre i na złe</h2>
+                            
                         </v-col>
                     </v-row>
-                    <v-row justify="start" style="height: 50px; margin: 0px;">
-                        <div style="margin-top: 80px;">
+                    <v-row justify="start" style="height: 50px; margin-left: 90px;">
+                        <div style="padding-left: 26px; margin-top: 80px;">
                             <v-btn href="#" x-large color="rgb(211, 211, 211)" elevation="24" style="color: black!important;">Zaadoptuj mnie</v-btn>
                         </div>
                     </v-row>
@@ -22,10 +22,33 @@
             </v-col>
         </v-row>
     </v-container>
-    <v-container fluid style="background-color: aquamarine;">
-        <v-row align="center" justify="start">
-            <v-col cols="4">
-                <p>xd</p>
+    <v-container fluid style="background-color: rgb(190, 159, 100);">
+        <v-row align="center" justify="center" style="margin-top: 10px; margin-bottom: 10px;">
+            <v-col cols="4" class="box_border">
+                <h3>Schronisko dla Bezdomnych<br/>Zwierząt w Rzeszowie</h3>
+                <p class="home_text">Schronisko dla Bezdomnych Zwierząt w Rzeszowie powstało w XXXX roku. Założyli je, wkładając w to wielką pracę i entuzjazm XXXX.</p>
+            </v-col>
+            <v-col cols="6">
+                <v-img contain src="/static/images/logo1.png" height="250px"></v-img>
+            </v-col>
+        </v-row>
+        <v-divider></v-divider>
+        <v-row align="center" justify="center" style="margin-top: 10px; margin-bottom: 10px;">
+            <v-col cols="6" style="padding-left: 0px;">
+                <v-card color="rgb(145, 108, 37)">
+                    <v-card-title style="font-size: 30px;"><i class="icon-guidedog"></i>Nowi w schronisku</v-card-title>
+                    <v-card-text>Tutaj będą zdjęcia kilku ostatnio dodanych zwierząt<v-card-text>
+                </v-card>
+            </v-col>
+            <v-col cols="4" class="box_border">
+                <h3>Poznaj nasze zwierzaki</h3>
+                <p class="home_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae lectus elit. Sed egestas tincidunt mi vel varius. Suspendisse ligula quam, placerat et consectetur vitae, suscipit at augue. Pellentesque vehicula facilisis imperdiet. Quisque sit amet ullamcorper massa.</p>
+            </v-col>
+        </v-row>
+        <v-divider></v-divider>
+        <v-row align="center" justify="center" style="margin-top: 10px; margin-bottom: 10px;">
+            <v-col cols="10">
+                <h3>Aktualności</h3>
             </v-col>
         </v-row>
     </v-container>
