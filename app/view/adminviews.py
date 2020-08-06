@@ -70,7 +70,7 @@ def render_news_update(request, id_news):
         news = get_news_by_id(request, id_news)
     except News.DoesNotExist:
         return redirect('adminnews')
-    news_form = New_Create(request.POST or None, instance = news)
+    news_form = New_Create(request.POST or None, request.FILES or None, instance = news)
     if news_form.is_valid():
        news_form.save()
        return redirect('adminnews')
