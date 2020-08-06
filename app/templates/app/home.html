@@ -54,8 +54,26 @@
         </v-row>
         <v-divider></v-divider>
         <v-row align="center" justify="center" style="margin-top: 10px; margin-bottom: 10px;">
-            <v-col cols="10">
+            <v-col cols="11">
                 <h3>Aktualności</h3>
+                <div style="margin-left: 75px;">
+                    {% for news in last_news %}
+                        <v-card color="#fff6d0" width="450px" height="240px" style="float: left; margin: 10px;">
+                            <div style="float: left;">
+                                <v-img class="ma-5" width="200px" height="200px"contain src="{{ news.image.url }}"></v-img>
+                            </div>
+                            <div style="float: left; width: 200px; height: 200px; margin: 20px 2px;">
+                                <div style="margin: 10px 0px">
+                                    <h4>{{news.title}}</h4>
+                                </div>
+                                <div style="text-align: center;">
+                                    <v-btn color="white" width="120px" height="40px">Czytaj</v-btn>
+                                </div>
+                            </div>
+                            <!-- <v-card-text style="color: black; margin: 0px 5px; padding: 0px 16px; text-align: center; font-size: 22px;">{{news.title}}</v-card-text> -->
+                        </v-card>
+                    {% endfor %}
+                </div>
             </v-col>
         </v-row>
     </v-container>
