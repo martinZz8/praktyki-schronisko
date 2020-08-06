@@ -10,7 +10,6 @@
                         <v-col cols="auto" class="box_shadow">
                             <h1>Schronisko dla zwierząt</h1>
                             <h2>Znajdź dla siebie przyjaciela<br/>na dobre i na złe</h2>
-                            
                         </v-col>
                     </v-row>
                     <v-row justify="start" style="height: 50px; margin-left: 90px;">
@@ -34,13 +33,21 @@
         </v-row>
         <v-divider></v-divider>
         <v-row align="center" justify="center" style="margin-top: 10px; margin-bottom: 10px;">
-            <v-col cols="6" style="padding-left: 0px;">
-                <v-card color="rgb(145, 108, 37)">
+            <v-col cols="auto" style="padding-left: 0px;">
+                <v-card height="380px" color="rgb(145, 108, 37)">
                     <v-card-title style="font-size: 30px;"><i class="icon-guidedog"></i>Nowi w schronisku</v-card-title>
-                    <v-card-text>Tutaj będą zdjęcia kilku ostatnio dodanych zwierząt<v-card-text>
+                    <v-card-text class="mx-auto">
+                        {% load index %}
+                        {% for animal in last_animals %}
+                            <v-card color="#fff6d0" width="240px" height="240px" style="float: left; margin: 10px;">
+                                <v-img class="mx-auto" width="200px" height="200px"contain src="{{ last_animals_thumbnails|index:forloop.counter0 }}"></v-img>
+                                <v-card-text style="color: black; margin: 0px 5px; padding: 0px 16px; text-align: center; font-size: 22px;">{{animal.name}}</v-card-text>
+                            </v-card>
+                        {% endfor %}
+                    </v-card-text>
                 </v-card>
             </v-col>
-            <v-col cols="4" class="box_border">
+            <v-col cols="5" class="box_border">
                 <h3>Poznaj nasze zwierzaki</h3>
                 <p class="home_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae lectus elit. Sed egestas tincidunt mi vel varius. Suspendisse ligula quam, placerat et consectetur vitae, suscipit at augue. Pellentesque vehicula facilisis imperdiet. Quisque sit amet ullamcorper massa.</p>
             </v-col>

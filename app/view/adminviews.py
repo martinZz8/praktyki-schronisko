@@ -49,7 +49,7 @@ def render_adminnews(request):
     return render(request, 'adminpages/adminnews.html', {'news':news})
 
 def render_addnews(request):
-    form = New_Create(request.POST or None)
+    form = New_Create(request.POST or None, request.FILES)
     if form.is_valid():
        form.save()
        return redirect('adminnews')

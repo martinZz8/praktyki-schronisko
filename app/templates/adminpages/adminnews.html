@@ -57,6 +57,7 @@
                             <v-col cols="8">
                                 <table class="formtable">
                                     <tr>
+                                        <th>Zdjęcie</th>
                                         <th>Tytuł</th>
                                         <th>Treść</th>
                                         <th>Data dodania</th>
@@ -64,6 +65,7 @@
                                     </tr>
                                     {% for new in news %}
                                     <tr>
+                                        <td rowspan="2"><img class="thumbnail" src="{{ new.image.url }}"/></td>
                                         <td rowspan="2">{{new.title}}</td>
                                         <td rowspan="2" class="content">{{new.content}}</td>
                                         <td rowspan="2" >{{new.date}}</td>

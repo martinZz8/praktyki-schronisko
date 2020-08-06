@@ -31,10 +31,11 @@ class PhotoCreate (forms.ModelForm):
 class New_Create(forms.ModelForm):
      class Meta:
          model=News
-         fields=( 'title', 'content')
+         fields=( 'title', 'content', 'image')
          labels = {
              "title": "Tytuł",
-             "content": "Treść"
+             "content": "Treść",
+             "image": "Zdjęcie"
          }
 
 ANIMAL_TYPE_CHOICES = (

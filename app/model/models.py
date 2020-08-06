@@ -55,6 +55,7 @@ class News(models.Model):
     ID = models.AutoField(primary_key=True)
     title = models.CharField(max_length=60)
     content = models.TextField()
+    image = models.ImageField(upload_to = 'image')
     date = models.DateTimeField(default=timezone.now)
 
     class Meta:

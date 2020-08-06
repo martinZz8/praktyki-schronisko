@@ -24,8 +24,8 @@ ul.menu_list > li > a:hover
 
 .thumbnail
 {
-    max-width: 130px;
-    max-height: 130px;
+    text-align: center;
+    padding: 10px;
 }
 
 .v-app-bar
