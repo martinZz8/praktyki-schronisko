@@ -17,14 +17,34 @@
         <div id="app">
             <v-app class="myFont">
                 <v-app-bar app>
-                    <a id="start" class="menu_list" href="#">Start</a>
+                    <a v-if="actual_subpage == 0" id="start" class="menu_list" href="#" style="color: darkgreen !important;">Start</a>
+                    <a v-else @click="actual_subpage = 0" id="start" class="menu_list" href="#">Start</a>
                     <v-spacer></v-spacer>
                     <ul class="menu_list">
-                        <li><a class="menu_list" href="#">Zaadoptuj mnie</a></li>
-                        <li><a class="menu_list" href="#">O schronisku</a></li>
-                        <li><a class="menu_list" href="#">Informacje o adopcji</a></li>
-                        <li><a class="menu_list" href="#">Wesprzyj nas</a></li>
-                        <li><a class="menu_list" href="#">Kontakt</a></li>
+                        <li>
+                            <a v-if="actual_subpage == 1" class="menu_list" href="#" style="color: darkgreen !important;">Zaadoptuj mnie</a>
+                            <a v-else @click="actual_subpage = 1" class="menu_list" href="#">Zaadoptuj mnie</a>
+                        </li>
+                        <li>
+                            <a v-if="actual_subpage == 2" class="menu_list" href="#" style="color: darkgreen !important;">Aktualności</a>
+                            <a v-else @click="actual_subpage = 2" class="menu_list" href="#">Aktualności</a>
+                        </li>
+                        <li>
+                            <a v-if="actual_subpage == 3" class="menu_list" href="#" style="color: darkgreen !important;">O schronisku</a>
+                            <a v-else @click="actual_subpage = 3" class="menu_list" href="#">O schronisku</a>
+                        </li>
+                        <li>
+                            <a v-if="actual_subpage == 4" class="menu_list" href="#" style="color: darkgreen !important;">Informacje o adopcji</a>
+                            <a v-else @click="actual_subpage = 4" class="menu_list" href="#">Informacje o adopcji</a>
+                        </li>
+                        <li>
+                            <a v-if="actual_subpage == 5" class="menu_list" href="#" style="color: darkgreen !important;">Wesprzyj nas</a>
+                            <a v-else @click="actual_subpage = 5" class="menu_list" href="#">Wesprzyj nas</a>
+                        </li>
+                        <li>
+                            <a v-if="actual_subpage == 6" class="menu_list" href="#" style="color: darkgreen !important;">Kontakt</a>
+                            <a v-else @click="actual_subpage = 6" class="menu_list" href="#">Kontakt</a>
+                        </li>
                     </ul>
                 </v-app-bar>
                 {% block content %}{% endblock %}
@@ -33,20 +53,20 @@
                         <v-card-title style="background-color: rgb(5,12,15);">
                             <strong class="subheading">Sprawdź nasze social media!</strong>
                             <v-spacer></v-spacer>
-                            <v-btn href="#" class="mx-4" dark icon>
+                            <v-btn href="http://www.facebook.com" target="_blank" class="mx-4" dark icon>
                                 <v-icon size="24px">mdi-facebook</v-icon>
                             </v-btn>
-                            <v-btn href="#" class="mx-4" dark icon>
+                            <v-btn href="http://www.twitter.com" target="_blank" class="mx-4" dark icon>
                                 <v-icon size="24px">mdi-twitter</v-icon>
                             </v-btn>
-                            <v-btn href="#" class="mx-4" dark icon>
+                            <v-btn href="http://www.youtube.com" target="_blank" class="mx-4" dark icon>
                                 <v-icon size="24px">mdi-youtube</mdi-youtube></v-icon>
                             </v-btn>
-                            <v-btn href="#" class="mx-4" dark icon>
+                            <v-btn href="http://www.instagram.com" target="_blank" class="mx-4" dark icon>
                                 <v-icon size="24px">mdi-instagram</v-icon>
                             </v-btn>
                         </v-card-title>
-                        <v-card-text class="py-2 white--text text-center">
+                        <v-card-text style="background-color: rgb(2,8,12);" class="py-2 white--text text-center">
                             [[ new Date().getFullYear() ]] — <strong>&copy; Schronisko dla Bezdomnych Zwierząt w Rzeszowie</strong>
                         </v-card-text>
                     </v-card>
@@ -62,7 +82,8 @@ var app = new Vue({
   delimiters: ["[[", "]]"],
   el: '#app',
   vuetify: new Vuetify(),
-  data: { 
+  data: {
+      actual_subpage: 0
   },
 });
 
