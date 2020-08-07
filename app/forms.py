@@ -36,7 +36,7 @@ class New_Create(forms.ModelForm):
              "title": "Tytuł",
              "content": "Treść",
              "image": "Zdjęcie",
-             "visible": "Czy post będzie widoczny dla odwiedzających"
+             "visible": "Widoczność posta dla odwiedzających."
          }
 
 ANIMAL_TYPE_CHOICES = (

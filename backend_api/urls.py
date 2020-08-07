@@ -23,6 +23,8 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.render_home, name='home'),
+    path('news/',views.render_news, name='news'),
+    path('news/post/<int:id_post>', views.render_post, name="post"),
 
     path('adminpage/', adminviews.render_thumbnail, name='admin'),
 
