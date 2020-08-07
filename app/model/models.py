@@ -28,6 +28,7 @@ class Animal(models.Model):
     entered = models.DateTimeField()
     type = models.CharField(max_length=20)
     race = models.CharField(max_length=30)
+    visible = models.BooleanField(default = False)
 
     class Meta:
         managed = True
@@ -36,6 +37,12 @@ class Animal(models.Model):
     def __str__(self):
         data = self.name
         return data
+
+    def status(self):
+        if self.visible==False:
+            return "niewidoczne"
+        else:
+            return "widoczne"
 
 
 class Application(models.Model):
@@ -57,11 +64,18 @@ class News(models.Model):
     content = models.TextField()
     image = models.ImageField(upload_to = 'image')
     date = models.DateTimeField(default=timezone.now)
+    visible = models.BooleanField(default = True)
 
     class Meta:
         managed = True
         db_table = 'news'
         verbose_name_plural = 'News'
+
+    def status(self):
+        if self.visible==False:
+            return "Nie"
+        else:
+            return "Tak"
 
 
 class Photo(models.Model):

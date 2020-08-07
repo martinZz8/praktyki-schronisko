@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+<v-container fluid style="height: 320px;">
+</v-container>
+<v-container fluid style="background-color: rgb(116, 97, 62);">
+    <v-row align="center" justify="center" style="margin-top: 10px; margin-bottom: 10px;">
+        <v-col cols="9" style="background-color: rgb(189, 150, 78);">
+            <div>
+                <div style="float: left; margin: 10px 20px;">
+                    <v-img class="ma-5" width="300px" height="300px"contain src="{{post.image.url}}"></v-img>
+                </div>
+                <div style="float: left; width: 850px;">
+                    <div style="display: block; text-align: right;">
+                        <p style="padding: 0px 4px; margin: 10px; font-size: 15px; font-weight: 700;">{{post.date}}</p>
+                    </div>
+                    <div style="display: block; min-height: 150px;">
+                        <h5>{{post.title}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div style="margin: 5px 0px;">
+                <p style="text-align: justify; padding: 0px 20px; margin: 10px; font-size: 16px; font-weight: 400;">{{post.content}}</p>
+            </div>
+        </v-col>
+    </v-row>
+</v-container>
+{% endblock %}
