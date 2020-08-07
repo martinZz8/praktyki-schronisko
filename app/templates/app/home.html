@@ -43,6 +43,8 @@
                                 <v-img class="mx-auto" width="200px" height="200px"contain src="{{ last_animals_thumbnails|index:forloop.counter0 }}"></v-img>
                                 <v-card-text style="color: black; margin: 0px 5px; padding: 0px 16px; text-align: center; font-size: 22px;">{{animal.name}}</v-card-text>
                             </v-card>
+                            {% empty %}
+                            <h4>Brak zwierząt do wyświetlenia</h4>
                         {% endfor %}
                     </v-card-text>
                 </v-card>
@@ -70,8 +72,9 @@
                                     <v-btn color="white" width="120px" height="40px">Czytaj</v-btn>
                                 </div>
                             </div>
-                            <!-- <v-card-text style="color: black; margin: 0px 5px; padding: 0px 16px; text-align: center; font-size: 22px;">{{news.title}}</v-card-text> -->
                         </v-card>
+                        {% empty %}
+                        <h4>Brak aktualności do wyświetlenia</h4>
                     {% endfor %}
                 </div>
             </v-col>

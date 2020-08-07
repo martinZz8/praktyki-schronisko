@@ -61,6 +61,7 @@
                                         <th>Tytuł</th>
                                         <th>Treść</th>
                                         <th>Data dodania</th>
+                                        <th>Widoczny na stronie</th>
                                         <th>Opcje</th>
                                     </tr>
                                     {% for new in news %}
@@ -69,6 +70,7 @@
                                         <td rowspan="2">{{new.title}}</td>
                                         <td rowspan="2" class="content">{{new.content}}</td>
                                         <td rowspan="2" >{{new.date}}</td>
+                                        <td rowspan="2" >{{new.status}}</td>
                                         <td><a @click="saveActId({{new.ID}})"><i class="icon-trash icons"></i></a></td>
                                     </tr>
                                     <tr>

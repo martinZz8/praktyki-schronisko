@@ -23,7 +23,6 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.render_home, name='home'),
-    path('test2/',views.rendertest2, name='images'),
 
     path('adminpage/', adminviews.render_thumbnail, name='admin'),
 
@@ -31,6 +30,7 @@ urlpatterns = [
     path('adminpage/adminanimals/addanimal', adminviews.render_addanimal, name='addanimal'),
     path('adminpage/adminanimals/animaldelete/<int:id_animal>', adminviews.render_animal_delete),
     path('adminpage/adminanimals/animalupdate/<int:id_animal>', adminviews.render_animal_update, name='animalupdate'),
+    path('adminpage/adminanimals/changestatus/<int:id_animal>', adminviews.change_animal_visibility, name='changestatus'),
 
     path('adminpage/adminanimals/adminphotos/<int:id_animal>', adminviews.render_admin_photos, name='adminphotos'),
     path('adminpage/adminanimals/adminphotos/photodelete/<int:id_photo>', adminviews.render_photo_delete, name='photodelete'),
