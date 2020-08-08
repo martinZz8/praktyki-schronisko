@@ -70,19 +70,22 @@
                                         {% load index %}
                                         {% for animal in animals %}
                                         <tr>
-                                            <td rowspan="4"><img class="thumbnail" src="{% index2 thumbnails animals.number forloop.counter0 %}"/></td>
-                                            <td rowspan="4">{{animal.name}}</td>
-                                            <td rowspan="4">{{animal.age}}</td>
-                                            <td rowspan="4">{{animal.sex}}</td>
-                                            <td rowspan="4">{{animal.race}}</td>
-                                            <td rowspan="4">{{animal.type}}</td>
-                                            <td rowspan="4">{{animal.entered}}</td>
-                                            <td class="content" rowspan="4">{{animal.description}}</td>
+                                            <td rowspan="5"><img class="thumbnail" src="{% index2 thumbnails animals.number forloop.counter0 %}"/></td>
+                                            <td rowspan="5">{{animal.name}}</td>
+                                            <td rowspan="5">{{animal.age}}</td>
+                                            <td rowspan="5">{{animal.sex}}</td>
+                                            <td rowspan="5">{{animal.race}}</td>
+                                            <td rowspan="5">{{animal.type}}</td>
+                                            <td rowspan="5">{{animal.entered}}</td>
+                                            <td class="content" rowspan="5">{{animal.description}}</td>
                                             <td><a @click="saveActId({{animal.ID}})"><i class="icon-trash icons"></i></a></td>
                                         </tr>
                                         <tr><td><a href="adminanimals/animalupdate/{{animal.ID}}"><i class="icon-pencil icons"></i></a></td></tr>
                                         <tr><td><a href="adminanimals/adminphotos/{{animal.ID}}"><i class="icon-picture icons"></i></a></td></tr>
                                         <tr><td><v-btn block color="rgba(60, 200, 100, 0.8)" small href="adminanimals/selectthumbnail/{{animal.ID}}">Wybierz miniaturę</v-btn></td></tr>
+                                        <tr>
+                                            <td><v-btn block color="rgba(60, 200, 100, 0.8)" small href="adminanimals/changestatus/{{animal.ID}}">Zmień widoczność</v-btn>Aktualnie: {{animal.status}}</td>
+                                        </tr>
                                         {% empty %}
                                         <tr><td colspan="9">Brak zwierząt</td></tr>
                                         {% endfor %}

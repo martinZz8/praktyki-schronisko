@@ -2,7 +2,7 @@ from django.shortcuts import render
 from app.model.models import Photo, Animal, News, Application
 from app.controller.photo_controller import image, images_list, get_thumbnail, get_thumbnails_urls, change_thumbnail
 from app.controller.news_controller import get_all_news, get_news_by_id
-from app.controller.animals_controller import get_all_animals, get_animal_by_id
+from app.controller.animals_controller import get_all_animals, get_animal_by_id, change_visibility_of_animal
 from app.controller.applications_controller import get_all_app, get_app_by_id
 from app.forms import New_Create, Animal_Create, Photo_create
 import requests
@@ -157,4 +157,8 @@ def render_select_thumbnail(request, id_animal):
 
 def render_change_thumbnail(request, id_photo):
     change_thumbnail(request, id_photo)
+    return redirect('animals')
+
+def change_animal_visibility(request, id_animal):
+    change_visibility_of_animal(request, id_animal)
     return redirect('animals')
