@@ -1,0 +1,152 @@
+html, .myFont
+{
+    font-size: 15px;
+}
+
+ul.admin_menu > li
+{
+    list-style-type: none;
+    float: left;
+}
+
+ul.admin_menu > li > a:hover
+{
+    background-color: rgba(0,0,0,0.1);
+}
+
+ul.admin_menu > li:last-child
+{
+    border-right: none;
+}
+
+a.admin_menu
+{
+    color: black !important;
+    height: 64px;
+    padding-top: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.v-toolbar__title > .v-btn
+{
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.addtable
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-collapse: collapse;
+    color: "rgb(255, 255, 255, 0.5)";
+}
+
+table, td, th
+{
+    border:inset 1px #000;
+}
+
+.formtable
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-collapse: collapse;
+    background-color: rgba(31,34,39,0.8);
+    color:#FFF;
+}
+
+.phototable
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-collapse: collapse;
+    background-color:#1F2227;
+    color:#FFF;
+}
+
+th
+{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.myth
+{
+    background-color:#FFF;
+    opacity: 0.8;
+}
+
+td, th
+{
+    min-height: 200px;
+    max-width: 700px;
+    padding: 5px;
+}
+
+td.content
+{
+    text-align: justify;
+}
+
+.thumbnail
+{
+    max-width: 130px;
+    max-height: 130px;
+}
+
+.adminphoto
+{
+    max-width: 400px;
+    max-height: 400px;
+}
+
+i.icons
+{
+    text-decoration: none;
+    color: white;
+}
+
+i.icons:hover
+{
+    color: grey;
+}
+
+ul.pagination
+{
+    text-align: center;
+    margin: 10px;
+}
+
+ul.pagination > li
+{
+    display: inline;
+    list-style-type: none;
+    border: 1px solid black;
+    background-color: rgba(31,34,39,0.8);
+    padding: 2px;
+    padding-bottom: 4px;
+    color: white;
+
+}
+
+ul.pagination > li > a
+{
+    text-decoration: none;
+    color: white;
+}
+
+.addphoto
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-collapse: collapse;
+    background-color: rgba(31,34,39,0.8);
+    color: rgb(5, 212, 33);
+}
