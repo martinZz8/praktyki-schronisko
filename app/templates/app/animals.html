@@ -18,22 +18,20 @@
 <v-container fluid style="background-color: rgb(172, 143, 89);">
     <v-row align="center" justify="center" style="margin-top: 10px; margin-bottom: 10px;">
         <v-col cols="10">
-            {% for new in news %}
+            {% load index %}
+            {% for animal in animals %}
                 <v-card color="#fff6d0" width="450px" height="240px" style="float: left; margin: 10px;">
                     <div style="float: left;">
-                        <v-img class="ma-5" width="200px" height="200px"contain src="{{ new.image.url }}"></v-img>
+                        <v-img class="ma-5" width="200px" height="200px"contain src="{{ animals_thumbnails|index:forloop.counter0 }}"></v-img>
                     </div>
                     <div style="float: left; height: 240px;">
                         <div style="display: block; width: 200px; height: 155px; margin: 15px 2px 2px 2px;">
                             <div style="margin: 10px 0px">
-                                <h4>{{new.title}}</h4>
+                                <h4>{{animal.name}}</h4>
                             </div>
                         </div>
                         <div style="display: block; text-align: center; margin: 3px 1px;">
-                            <v-btn color="white" width="120px" height="40px" href="post/{{new.ID}}">Czytaj</v-btn>
-                        </div>
-                        <div style="display: block; text-align: right; margin: 7px 1px 3px 1px;">
-                            <p style="padding: 0px 4px; margin: 0px; font-size: 11px;">{{new.date}}</p>
+                            <v-btn color="white" width="150px" height="40px" href="#">Zobacz więcej</v-btn>
                         </div>
                     </div>
                 </v-card>
