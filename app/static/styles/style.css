@@ -123,6 +123,20 @@ h5
 #bg_img_2
 {
     background-image: url("/static/images/tlo2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 572px;
+    background-attachment: local;
+}
+
+#bg_img_3
+{
+    background-image: url("/static/images/tlo3.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     top: 0;
