@@ -6,6 +6,7 @@
         <meta charset="utf-8">
         <meta name="keywords" content="Schronisko dla zwierząt, Schronisko dla zwierząt w Rzeszowie, schronisko, zwierzęta, Rzeszów">
         <meta name="description" content="Strona Rzeszowskiego schroniska dla zwierząt">
+        <link rel="shortcut icon" href="/static/favicon/favicon.ico">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -85,51 +86,27 @@ var app = new Vue({
   data: {
   },
   mounted: function() {
-      if (!Vue.$localStorage.hasKey('active_subpage')) {
+    // jeżeli nie ma elementu active_subpage w localStorage
+    if (!Vue.$localStorage.hasKey('active_subpage')) {
         Vue.$localStorage.set('active_subpage', '0')
         var active_element = '#' + Vue.$localStorage.get('active_subpage')
         $(active_element).removeClass("inactive");
         $(active_element).addClass("active");
-      }
-      else if (window.location.pathname == "/") {
+    } // jeżeli wchodzimy na stronę główną
+    else if (window.location.pathname == "/") {
         Vue.$localStorage.set('active_subpage', '0')
         var active_element = '#' + Vue.$localStorage.get('active_subpage')
-        if (Vue.$localStorage.hasKey('previous_subpage')) {
-            if (Vue.$localStorage.get('active_subpage') != Vue.$localStorage.get('previous_subpage')) {
-                var previous_element = '#' + Vue.$localStorage.get('previous_subpage')
-                $(active_element).removeClass("inactive");
-                $(active_element).addClass("active");
-                $(previous_element).removeClass("active");
-                $(previous_element).addClass("inactive");
-            }
-            else {
-                $(active_element).removeClass("inactive");
-                $(active_element).addClass("active");
-            }
-        }
-        else {
-            $(active_element).removeClass("inactive");
-            $(active_element).addClass("active");
-        }
-      }
-      else {
+        $(active_element).removeClass("inactive");
+        $(active_element).addClass("active");
+    }
+    else {
         var active_element = '#' + Vue.$localStorage.get('active_subpage')
-        if (Vue.$localStorage.get('active_subpage') != Vue.$localStorage.get('previous_subpage')) {
-            var previous_element = '#' + Vue.$localStorage.get('previous_subpage')
-            $(active_element).removeClass("inactive");
-            $(active_element).addClass("active");
-            $(previous_element).removeClass("active");
-            $(previous_element).addClass("inactive");
-        }
-        else {
-            $(active_element).removeClass("inactive");
-            $(active_element).addClass("active");
-        }
-      }
+        $(active_element).removeClass("inactive");
+        $(active_element).addClass("active");
+    }
   },
   methods: {
       toggleActiveSubpage(number) {
-        Vue.$localStorage.set('previous_subpage', Vue.$localStorage.get('active_subpage'))
         Vue.$localStorage.set('active_subpage', number)
       }
   }
