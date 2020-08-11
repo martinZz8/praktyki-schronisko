@@ -82,26 +82,54 @@ var app = new Vue({
   data: {
   },
   mounted: function() {
-      console.log("Działa mounted", Vue.$localStorage.get('active_subpage'))
-      if (window.location.pathname == "/") {
+      if (!Vue.$localStorage.hasKey('active_subpage')) {
         Vue.$localStorage.set('active_subpage', '0')
-        $("#0").removeClass("inactive");
-        $("#0").addClass("active");
-        console.log('Active subpage jest 0')
+        var active_element = '#' + Vue.$localStorage.get('active_subpage')
+        $(active_element).removeClass("inactive");
+        $(active_element).addClass("active");
+      }
+      else if (window.location.pathname == "/") {
+        Vue.$localStorage.set('active_subpage', '0')
+        var active_element = '#' + Vue.$localStorage.get('active_subpage')
+        if (Vue.$localStorage.hasKey('previous_subpage')) {
+            if (Vue.$localStorage.get('active_subpage') != Vue.$localStorage.get('previous_subpage')) {
+                var previous_element = '#' + Vue.$localStorage.get('previous_subpage')
+                $(active_element).removeClass("inactive");
+                $(active_element).addClass("active");
+                $(previous_element).removeClass("active");
+                $(previous_element).addClass("inactive");
+            }
+            else {
+                $(active_element).removeClass("inactive");
+                $(active_element).addClass("active");
+            }
+        }
+        else {
+            $(active_element).removeClass("inactive");
+            $(active_element).addClass("active");
+        }
+      }
+      else {
+        var active_element = '#' + Vue.$localStorage.get('active_subpage')
+        if (Vue.$localStorage.get('active_subpage') != Vue.$localStorage.get('previous_subpage')) {
+            var previous_element = '#' + Vue.$localStorage.get('previous_subpage')
+            $(active_element).removeClass("inactive");
+            $(active_element).addClass("active");
+            $(previous_element).removeClass("active");
+            $(previous_element).addClass("inactive");
+            console.log('Działam na dole.')
+        }
+        else {
+            console.log('Wywoluje sie else na dole.')
+            $(active_element).removeClass("inactive");
+            $(active_element).addClass("active");
+        }
       }
   },
   methods: {
       toggleActiveSubpage(number) {
-        console.log("Działa funkcja toggleActiveSubpage")
-        inactive_element = '#' + Vue.$localStorage.get('active_subpage')
-        active_element = '#' + number
-        $(".menu_list").on("click", function () {
-            $(inactive_element).removeClass("active");
-            $(inactive_element).addClass("inactive");
-            $(active_element).removeClass("inactive");
-            $(active_element).addClass("active");
-            console.log('Aktywny element: ', Vue.$localStorage.get('active_subpage'))
-        })
+        console.log('Działa toggleActiveSubpage')
+        Vue.$localStorage.set('previous_subpage', Vue.$localStorage.get('active_subpage'))
         Vue.$localStorage.set('active_subpage', number)
       }
   }
