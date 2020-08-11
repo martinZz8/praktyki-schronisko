@@ -70,7 +70,6 @@
                                 <v-col cols="2"></v-col>
                                 <v-col cols="8">
                                     <table class="phototable">
-                                        {% load index %}
                                         {% for photo in photos %}
                                         <tr>
                                             <td><img class="adminphoto" src="{{ photo.image.url }}"/></td>
