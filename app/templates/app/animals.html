@@ -1,0 +1,44 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+<v-container fluid class="header">
+    <v-row>
+        <v-col clos="12" class="header" id="bg_img_3">
+            <v-container fluid>
+                <br/><br/>
+                <v-row align="center" justify="start" style="height: 400px; padding-top: 100px; margin-left: 90px;">
+                    <v-col cols="auto" class="box_shadow">
+                        <h1>Nasze zwierzaki</h1>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </v-col>
+    </v-row>
+</v-container>
+<v-container fluid style="background-color: rgb(172, 143, 89);">
+    <v-row align="center" justify="center" style="margin-top: 10px; margin-bottom: 10px;">
+        <v-col cols="10">
+            {% load index %}
+            {% for animal in animals %}
+                <v-card color="#fff6d0" width="450px" height="240px" style="float: left; margin: 10px;">
+                    <div style="float: left;">
+                        <v-img class="ma-5" width="200px" height="200px"contain src="{{ animals_thumbnails|index:forloop.counter0 }}"></v-img>
+                    </div>
+                    <div style="float: left; height: 240px;">
+                        <div style="display: block; width: 200px; height: 155px; margin: 15px 2px 2px 2px;">
+                            <div style="margin: 10px 0px">
+                                <h4>{{animal.name}}</h4>
+                            </div>
+                        </div>
+                        <div style="display: block; text-align: center; margin: 3px 1px;">
+                            <v-btn color="white" width="150px" height="40px" href="#">Zobacz więcej</v-btn>
+                        </div>
+                    </div>
+                </v-card>
+                {% empty %}
+                <h4>Brak aktualności do wyświetlenia</h4>
+            {% endfor %}
+        </v-col>
+    </v-row>
+</v-container>
+{% endblock %}

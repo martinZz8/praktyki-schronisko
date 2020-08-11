@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="pl">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'styles/style_admin.css' %}">
+        <link rel="stylesheet" href="{% static 'fontello/css/fontello.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <v-app class="myFont">
+                <v-dialog v-model="delete_confirm" max-width="330px">
+                    <v-card>
+                        <v-card-title class="headline grey lighten-2">
+                            Potwierdzenie usunięcia
+                        </v-card-title>
+                        <v-card-text>
+                            Czy na pewno chcesz usunąć ten element?
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green darken-1" text v-bind:href="'adminapplications/appdelete/'+[[act_id]]">Usuń</v-btn>
+                            <v-btn color="green darken-1" text @click="delete_confirm = false">Anuluj</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+                <div>
+                    <v-toolbar color="rgba(60, 200, 100, 1)">       
+                        <v-toolbar-title><v-btn color="rgba(60, 200, 100, 1)" href="{% url 'admin' %}">Panel administracyjny</v-btn></v-toolbar-title>
+                        <v-spacer></v-spacer>
+                        <ul class="admin_menu">
+                            <li><a class="admin_menu" href="{% url 'adminanimals' %}">Zarządzaj zwierzętami</a></li>
+                            <li><a class="admin_menu" href="{% url 'adminnews' %}">Zarządzaj postami</a></li>
+                            <li><a class="admin_menu" href="{% url 'applications' %}">Zarządzaj aplikacjami</a></li>
+                        </ul>
+                    </v-toolbar>
+                </div>
+                <v-img src="/static/images/grass.jpg">
+                    <br/><br/>
+                    <v-container fluid>
+                        <v-row>
+                            <v-col cols="2"></v-col>
+                            <v-col cols="8">
+                                <table class="formtable">
+                                    <tr>
+                                        <th>Dane aplikanta</th>
+                                        <th>Email</th>
+                                        <th>Zwierzę</th>
+                                        <th>Powód aplikacji</th>
+                                        <th>Data dodania</th>
+                                        <th></th>
+                                    </tr>
+                                    {% for app in applications %}
+                                    <tr>
+                                        <td>{{app.name}} {{app.surname}}</td>
+                                        <td>{{app.email}}</td>
+                                        <td>{{app.animal.name}}</td>
+                                        <td class="content">{{app.info}}</td>
+                                        <td>{{app.date}}</td>
+                                        <td><a @click="saveActId({{app.ID}})"><i class="icon-trash icons"></i></a></td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr><td colspan="6">Brak aplikacji</td></tr>
+                                    {% endfor %}
+                                </table>
+
+                                {% if applications.has_other_pages %}
+                                <ul class="pagination">
+                                  {% if applications.has_previous %}
+                                  <li><a href="?page={{ applications.previous_page_number }}"><v-icon color="white" size="20px">mdi-menu-left</v-icon></a></li>
+                                  {% else %}
+                                    <li class="disabled"><v-icon color="white" size="20px">mdi-menu-left</v-icon></li>
+                                  {% endif %}
+                                  {% for i in applications.paginator.page_range %}
+                                    {% if applications.number == i %}
+                                      <li>{{ i }} (obecna strona)</li>
+                                    {% else %}
+                                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% if applications.has_next %}
+                                    <li><a href="?page={{ applications.next_page_number }}"><v-icon color="white" size="20px">mdi-menu-right</v-icon></a></li>
+                                  {% else %}
+                                    <li class="disabled"><v-icon color="white" size="20px">mdi-menu-right</v-icon></li>
+                                  {% endif %}
+                                </ul>
+                              {% endif %}
+
+                            </v-col>
+                            <v-col cols="2"></v-col>
+                        </v-row>
+                    </v-container>
+                </v-img>
+            </v-app>
+        </div>
+    </body>
+</html>
+
+<script>
+var app = new Vue({
+  delimiters: ["[[", "]]"],
+  el: '#app',
+  vuetify: new Vuetify(),
+  data: {
+    delete_confirm: false,
+    act_id: ''
+  },
+  methods: {
+    saveActId(id) {
+        this.delete_confirm = true;
+        this.act_id = id;
+    }
+  }
+});
+
+</script>
