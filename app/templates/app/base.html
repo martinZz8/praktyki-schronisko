@@ -117,10 +117,8 @@ var app = new Vue({
             $(active_element).addClass("active");
             $(previous_element).removeClass("active");
             $(previous_element).addClass("inactive");
-            console.log('Działam na dole.')
         }
         else {
-            console.log('Wywoluje sie else na dole.')
             $(active_element).removeClass("inactive");
             $(active_element).addClass("active");
         }
@@ -128,7 +126,6 @@ var app = new Vue({
   },
   methods: {
       toggleActiveSubpage(number) {
-        console.log('Działa toggleActiveSubpage')
         Vue.$localStorage.set('previous_subpage', Vue.$localStorage.get('active_subpage'))
         Vue.$localStorage.set('active_subpage', number)
       }
