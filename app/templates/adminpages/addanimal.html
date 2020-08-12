@@ -33,20 +33,17 @@
                         <v-row>
                             <v-col cols="4"></v-col>
                             <v-col cols="4">
-                                <v-card color="rgb(255, 255, 255, 0.6)">
+                                <v-card color="rgb(255, 255, 255, 0.7)">
                                     <div class="banner">
                                         <div class="container">
                                             <div class="banner-content">
                                                 <form method = 'POST' enctype="multipart/form-data">
                                                     {% csrf_token %}
-                                                    <table class="addtable">
                                                         {% for animal in addanimal %}
-                                                        <tr>
-                                                            <th class="myth">{{ animal.label }}</th>
-                                                            <td>{{ animal }}</td>
-                                                        </tr>
+                                                        <ul>
+                                                            {{ animal.label }} : {{ animal }}
+                                                        </ul>
                                                         {% endfor %}
-                                                    </table>
                                                     <br/>
                                                     <div style="border-top: 1px solid; height: 20px;"></div>
                                                     <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Zapisz</v-btn>  

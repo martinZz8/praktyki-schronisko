@@ -39,14 +39,11 @@
                                             <div class="banner-content">
                                                 <form method = 'POST' enctype="multipart/form-data">
                                                     {% csrf_token %}
-                                                    <table class="addtable">
                                                         {% for new in addnews %}
-                                                        <tr>
-                                                            <th class="myth">{{ new.label }}</th>
-                                                            <td>{{ new }}</td>
-                                                        </tr>
+                                                        <ul>
+                                                            {{ new.label }} : {{ new }}
+                                                        </ul>
                                                         {% endfor %}
-                                                    </table>
                                                     <br/>
                                                     <div style="border-top: 1px solid; height: 20px;"></div>
                                                     <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Zapisz</v-btn>  

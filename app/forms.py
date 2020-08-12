@@ -83,3 +83,15 @@ class Animal_Create(forms.ModelForm):
 
 class Photo_create(forms.Form):
     img=forms.ImageField()
+
+class Application_Create(forms.ModelForm):
+
+    class Meta:
+        model=Application
+        fields = ( 'name', 'surname', 'email', 'info' )
+        labels = {
+            "name": "Imię",
+            "surname": "Nazwisko",
+            "email": "Adres e-mail",
+            "info": "Dlaczego chciałbyś adoptować to zwierzątko?"
+        }

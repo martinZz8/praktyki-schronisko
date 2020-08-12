@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from app.model.models import Photo
+from app.forms import Application_Create
 from app.controller.photo_controller import image, images_list, get_thumbnail, get_thumbnails_urls
 from app.controller.animals_controller import get_last_three_animals, get_all_animals, get_animal_by_id
 from app.controller.news_controller import get_last_five_news, get_all_visible_news, get_news_by_id
@@ -32,3 +33,11 @@ def render_animal(request, id_animal):
     thumbnail = get_thumbnail(request, id_animal)
     photos = images_list(request, id_animal)
     return render(request, 'app/animal.html', {'animal':animal, 'thumbnail':thumbnail, 'photos':photos})
+
+def render_application(request, id_animal):
+    id_animal = int(id_animal)
+    form = Application_Create(request.POST or None)
+    if form.is_valid():
+       form.save()
+       return redirect('animals')
+    return render(request, 'app/app.html', {'addapp':form})

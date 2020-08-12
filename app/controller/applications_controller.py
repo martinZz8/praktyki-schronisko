@@ -1,4 +1,4 @@
-from app.model.models import Application
+from app.model.models import Application, Animal
 
 def get_all_app(request):
     app=Application.objects.all()

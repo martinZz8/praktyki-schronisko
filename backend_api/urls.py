@@ -25,7 +25,8 @@ urlpatterns = [
     path('',views.render_home, name='home'),
     path('animals/',views.render_animals, name='animals'),
     path('animals/animal/<int:id_animal>', views.render_animal, name="animal"),
-    
+    path('animals/animal/app/<int:id_animal>', views.render_application, name="app"),
+
     path('news/',views.render_news, name='news'),
     path('news/post/<int:id_post>', views.render_post, name="post"),
 

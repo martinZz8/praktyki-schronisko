@@ -1,0 +1,14 @@
+<div id="app">
+    <v-app >
+        <form method = 'POST' enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for new in addapp %}
+            <ul>
+                {{ new.label }} : {{ new }}
+            </ul>
+            {% endfor %}
+            <br/>
+            <input type="submit" ></input> 
+        </form>
+    </v-app>
+</div>
