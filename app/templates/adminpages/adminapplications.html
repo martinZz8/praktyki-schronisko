@@ -64,7 +64,7 @@
                                         <td>{{app.animal.name}}</td>
                                         <td class="content">{{app.info}}</td>
                                         <td>{{app.date}}</td>
-                                        <td><a @click="saveActId({{app.ID}})"><i class="icon-trash icons"></i></a></td>
+                                        <td><a @click="saveActId({{app.ID}})" title="Usuń element"><i class="icon-trash icons"></i></a></td>
                                     </tr>
                                     {% empty %}
                                     <tr><td colspan="6">Brak aplikacji</td></tr>

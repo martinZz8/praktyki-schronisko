@@ -1,0 +1,1 @@
+<input style="background-color: #f2f2f2; border: 1px solid #666666; border-radius: 2px;" type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>

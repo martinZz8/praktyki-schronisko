@@ -179,3 +179,9 @@ p.home_text
     color: white!important;
     border-bottom: 1px solid white;
 }
+
+ul.app_list > li
+{
+    list-style-type: none;
+    margin: 5px 2px;
+}

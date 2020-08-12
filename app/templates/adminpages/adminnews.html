@@ -71,10 +71,10 @@
                                         <td rowspan="2" class="content">{{new.content|linebreaks}}</td>
                                         <td rowspan="2" >{{new.date}}</td>
                                         <td rowspan="2" >{{new.status}}</td>
-                                        <td><a @click="saveActId({{new.ID}})"><i class="icon-trash icons"></i></a></td>
+                                        <td><a @click="saveActId({{new.ID}})" title="Usuń element"><i class="icon-trash icons"></i></a></td>
                                     </tr>
                                     <tr>
-                                        <td><a href="adminnews/newsupdate/{{new.ID}}"><i class="icon-pencil icons"></i></a></td>
+                                        <td><a href="adminnews/newsupdate/{{new.ID}}" title="Edytuj element"><i class="icon-pencil icons"></i></a></td>
                                     </tr>
                                     {% empty %}
                                     <tr><td colspan="5">Brak postów</td></tr>

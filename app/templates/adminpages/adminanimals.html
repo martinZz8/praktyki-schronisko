@@ -78,10 +78,10 @@
                                             <td rowspan="5">{{animal.type}}</td>
                                             <td rowspan="5">{{animal.entered}}</td>
                                             <td class="content" rowspan="5">{{animal.description}}</td>
-                                            <td><a @click="saveActId({{animal.ID}})"><i class="icon-trash icons"></i></a></td>
+                                            <td><a @click="saveActId({{animal.ID}})" title="Usuń element"><i class="icon-trash icons"></i></a></td>
                                         </tr>
-                                        <tr><td><a href="adminanimals/animalupdate/{{animal.ID}}"><i class="icon-pencil icons"></i></a></td></tr>
-                                        <tr><td><a href="adminanimals/adminphotos/{{animal.ID}}"><i class="icon-picture icons"></i></a></td></tr>
+                                        <tr><td><a href="adminanimals/animalupdate/{{animal.ID}}" title="Edytuj element"><i class="icon-pencil icons"></i></a></td></tr>
+                                        <tr><td><a href="adminanimals/adminphotos/{{animal.ID}}" title="Zarządzaj zdjęciami"><i class="icon-picture icons"></i></a></td></tr>
                                         <tr><td><v-btn block color="rgba(60, 200, 100, 0.8)" small href="adminanimals/selectthumbnail/{{animal.ID}}">Wybierz miniaturę</v-btn></td></tr>
                                         <tr>
                                             <td><v-btn block color="rgba(60, 200, 100, 0.8)" small href="adminanimals/changestatus/{{animal.ID}}">Zmień widoczność</v-btn>Aktualnie: {{animal.status}}</td>

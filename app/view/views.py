@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from app.model.models import Photo
+from django.shortcuts import render, redirect
+from app.model.models import Photo, Application
 from app.forms import Application_Create
 from app.controller.photo_controller import image, images_list, get_thumbnail, get_thumbnails_urls
 from app.controller.animals_controller import get_last_three_animals, get_all_animals, get_animal_by_id
@@ -36,8 +36,23 @@ def render_animal(request, id_animal):
 
 def render_application(request, id_animal):
     id_animal = int(id_animal)
-    form = Application_Create(request.POST or None)
-    if form.is_valid():
-       form.save()
-       return redirect('animals')
-    return render(request, 'app/app.html', {'addapp':form})
+    if request.method == "POST": 
+        form = Application_Create(request.POST or None)
+        if form.is_valid():
+            animal=get_animal_by_id(request, id_animal)
+            name=form.cleaned_data.get("name")
+            surname=form.cleaned_data.get("surname")
+            email=form.cleaned_data.get("email")
+            info=form.cleaned_data.get("info")
+            obj = Application.objects.create( 
+                                name=name,
+                                surname=surname,
+                                email=email,
+                                info=info,
+                                animal=animal
+                                ) 
+            obj.save()
+            return redirect('animal', id_animal = id_animal)
+    else: 
+        form = Application_Create()
+    return render(request, 'app/app.html', {'addapp':form, 'animal':id_animal})
