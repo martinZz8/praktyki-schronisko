@@ -3,6 +3,10 @@
 {% load static %}
 <html lang="pl">
     <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="Schronisko dla zwierząt, Schronisko dla zwierząt w Rzeszowie, schronisko, zwierzęta, Rzeszów">
+        <meta name="description" content="Strona Rzeszowskiego schroniska dla zwierząt">
+        <link rel="shortcut icon" href="/static/favicon/favicon.ico">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -82,26 +86,27 @@ var app = new Vue({
   data: {
   },
   mounted: function() {
-      console.log("Działa mounted", Vue.$localStorage.get('active_subpage'))
-      if (window.location.pathname == "/") {
+    // jeżeli nie ma elementu active_subpage w localStorage
+    if (!Vue.$localStorage.hasKey('active_subpage')) {
         Vue.$localStorage.set('active_subpage', '0')
-        $("#0").removeClass("inactive");
-        $("#0").addClass("active");
-        console.log('Active subpage jest 0')
-      }
+        var active_element = '#' + Vue.$localStorage.get('active_subpage')
+        $(active_element).removeClass("inactive");
+        $(active_element).addClass("active");
+    } // jeżeli wchodzimy na stronę główną
+    else if (window.location.pathname == "/") {
+        Vue.$localStorage.set('active_subpage', '0')
+        var active_element = '#' + Vue.$localStorage.get('active_subpage')
+        $(active_element).removeClass("inactive");
+        $(active_element).addClass("active");
+    }
+    else {
+        var active_element = '#' + Vue.$localStorage.get('active_subpage')
+        $(active_element).removeClass("inactive");
+        $(active_element).addClass("active");
+    }
   },
   methods: {
       toggleActiveSubpage(number) {
-        console.log("Działa funkcja toggleActiveSubpage")
-        inactive_element = '#' + Vue.$localStorage.get('active_subpage')
-        active_element = '#' + number
-        $(".menu_list").on("click", function () {
-            $(inactive_element).removeClass("active");
-            $(inactive_element).addClass("inactive");
-            $(active_element).removeClass("inactive");
-            $(active_element).addClass("active");
-            console.log('Aktywny element: ', Vue.$localStorage.get('active_subpage'))
-        })
         Vue.$localStorage.set('active_subpage', number)
       }
   }
