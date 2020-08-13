@@ -3,6 +3,12 @@
 {% load static %}
 <html lang="pl">
     <head>
+        <title>Schronisko w Rzeszowie</title>
+        <meta charset="utf-8">
+        <meta name="keywords" content="Schronisko dla zwierząt, Schronisko dla zwierząt w Rzeszowie, schronisko, zwierzęta, Rzeszów">
+        <meta name="description" content="Strona Rzeszowskiego schroniska dla zwierząt">
+        <meta name="title" content="Schronisko dla bezdomnych zwierząt w Rzeszowie">
+        <link rel="shortcut icon" href="/static/favicon/favicon.ico">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -11,32 +17,34 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-web-storage@4"></script>
     </head>
 
     <body>
         <div id="app">
             <v-app class="myFont">
                 <v-app-bar app>
-                    <a id="start" class="menu_list" href="{% url 'home' %}">Start</a>
+                    <a @click="toggleActiveSubpage(0)" class="menu_list start inactive" id="0" href="{% url 'home' %}">Start</a>
                     <v-spacer></v-spacer>
                     <ul class="menu_list">
                         <li>
-                            <a class="menu_list" href="#">Zaadoptuj mnie</a>
+                            <a @click="toggleActiveSubpage(1)" class="menu_list inactive" id="1" href="{% url 'animals' %}">Zaadoptuj mnie</a>
                         </li>
                         <li>
-                            <a class="menu_list" href="{% url 'news' %}">Aktualności</a>
+                            <a @click="toggleActiveSubpage(2)" class="menu_list inactive" id="2" href="{% url 'news' %}">Aktualności</a>
                         </li>
                         <li>
-                            <a class="menu_list" href="#">O schronisku</a>
+                            <a @click="toggleActiveSubpage(3)" class="menu_list inactive" id="3" href="#">O schronisku</a>
                         </li>
                         <li>
-                            <a class="menu_list" href="#">Informacje o adopcji</a>
+                            <a @click="toggleActiveSubpage(4)" class="menu_list inactive" id="4" href="#">Informacje o adopcji</a>
                         </li>
                         <li>
-                            <a class="menu_list" href="#">Wesprzyj nas</a>
+                            <a @click="toggleActiveSubpage(5)" class="menu_list inactive" id="5" href="#">Wesprzyj nas</a>
                         </li>
                         <li>
-                            <a class="menu_list" href="#">Kontakt</a>
+                            <a @click="toggleActiveSubpage(6)" class="menu_list inactive" id="6" href="#">Kontakt</a>
                         </li>
                     </ul>
                 </v-app-bar>
@@ -71,12 +79,41 @@
 </html>
 
 <script>
+Vue.use(VueWebStorage.default)
+
 var app = new Vue({
   delimiters: ["[[", "]]"],
   el: '#app',
   vuetify: new Vuetify(),
   data: {
   },
+  mounted: function() {
+    // jeżeli nie ma elementu active_subpage w localStorage
+    if (!Vue.$localStorage.hasKey('active_subpage')) {
+        Vue.$localStorage.set('active_subpage', '0')
+        var active_element = '#' + Vue.$localStorage.get('active_subpage')
+        $(active_element).removeClass("inactive");
+        $(active_element).addClass("active");
+    } // jeżeli wchodzimy na stronę główną
+    else if (window.location.pathname == "/") {
+        Vue.$localStorage.set('active_subpage', '0')
+        var active_element = '#' + Vue.$localStorage.get('active_subpage')
+        $(active_element).removeClass("inactive");
+        $(active_element).addClass("active");
+    }
+    else {
+        var active_element = '#' + Vue.$localStorage.get('active_subpage')
+        $(active_element).removeClass("inactive");
+        $(active_element).addClass("active");
+    }
+  },
+  methods: {
+      toggleActiveSubpage(number) {
+        Vue.$localStorage.set('active_subpage', number)
+      }
+  }
 });
+
+
 
 </script>

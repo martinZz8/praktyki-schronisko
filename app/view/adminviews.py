@@ -101,7 +101,7 @@ def render_addanimal(request):
     form = Animal_Create(request.POST or None)
     if form.is_valid():
        form.save()
-       return redirect('animals')
+       return redirect('adminanimals')
     return render(request, 'adminpages/addanimal.html', {'addanimal':form})
 
 def render_animal_delete(request, id_animal):
@@ -109,20 +109,20 @@ def render_animal_delete(request, id_animal):
     try:
         animal = Animal.objects.get(ID = id_animal)
     except Animal.DoesNotExist:
-        return redirect('animals')
+        return redirect('adminanimals')
     animal.delete()
-    return redirect('animals')
+    return redirect('adminanimals')
 
 def render_animal_update(request, id_animal):
     id_animal = int(id_animal)
     try:
         animal = get_animal_by_id(request, id_animal)
     except Animal.DoesNotExist:
-        return redirect('animals')
+        return redirect('adminanimals')
     animal_form = Animal_Create(request.POST or None, instance = animal)
     if animal_form.is_valid():
        animal_form.save()
-       return redirect('animals')
+       return redirect('adminanimals')
     return render(request, 'adminpages/addanimal.html', {'addanimal':animal_form})
 
 def render_admin_photos(request, id_animal):
@@ -157,8 +157,8 @@ def render_select_thumbnail(request, id_animal):
 
 def render_change_thumbnail(request, id_photo):
     change_thumbnail(request, id_photo)
-    return redirect('animals')
+    return redirect('adminanimals')
 
 def change_animal_visibility(request, id_animal):
     change_visibility_of_animal(request, id_animal)
-    return redirect('animals')
+    return redirect('adminanimals')

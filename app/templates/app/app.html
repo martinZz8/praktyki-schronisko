@@ -1,0 +1,37 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+<v-container fluid style="height: 320px;">
+</v-container>
+<v-container fluid style="background-color: rgb(116, 97, 62);">
+    <v-row align="center" justify="center" class="my-2">
+        <v-col cols="4">
+            <v-card>
+                <v-card-title>Formularz aplikacyjny</v-card-title>
+                <v-divider></v-divider>
+                <v-row class="ma-1">
+                    <v-col cols="12">
+                        <form method = 'POST' enctype="multipart/form-data">
+                            <v-row>
+                                <v-col style="padding: 0px 50px; margin-bottom: 12px;" cols="12">
+                                    {% csrf_token %}
+                                    {% for new in addapp %}
+                                        <ul class="app_list">
+                                            <li>{{ new }}</li>
+                                        </ul>
+                                    {% endfor %}
+                                </v-col>
+                            </v-row>
+                        </form>
+                        <v-card-actions>
+                                <v-btn width="100px" height="40px" type="submit" > Wyślij</v-btn>
+                                <v-spacer></v-spacer>
+                                <v-btn color="white" width="320px" height="40px" href="{% url 'animal' animal %}"> Powrót do strony zwierzęcia</v-btn>
+                        </v-card-actions>
+                    </v-col>
+                </v-row>
+            </v-card-title>
+        </v-col>
+    </v-row>
+</v-container>
+{% endblock %}

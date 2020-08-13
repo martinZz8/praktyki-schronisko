@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'django.forms',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'backend_api/media')
 
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep)+['backend_api']))
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'

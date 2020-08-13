@@ -83,3 +83,9 @@ class Animal_Create(forms.ModelForm):
 
 class Photo_create(forms.Form):
     img=forms.ImageField()
+
+class Application_Create(forms.Form):
+    name=forms.CharField(max_length=20, label="Imię", widget=forms.TextInput(attrs={'placeholder': 'Imię'}))
+    surname=forms.CharField(max_length=30, label="Nazwisko", widget=forms.TextInput(attrs={'placeholder': 'Nazwisko'}))
+    email=forms.CharField(max_length=40, label="Adres e-mail", widget=forms.TextInput(attrs={'placeholder': 'Adres e-mail'}))
+    info=forms.CharField(label="Dlaczego chcesz przygarnąć tego zwierzaka?", widget=forms.Textarea(attrs={'placeholder': 'Dlaczego chcesz przygarnąć tego zwierzaka?'}))

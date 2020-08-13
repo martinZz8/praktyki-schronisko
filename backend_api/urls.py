@@ -23,12 +23,16 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.render_home, name='home'),
+    path('animals/',views.render_animals, name='animals'),
+    path('animals/animal/<int:id_animal>', views.render_animal, name="animal"),
+    path('animals/animal/app/<int:id_animal>', views.render_application, name="app"),
+
     path('news/',views.render_news, name='news'),
     path('news/post/<int:id_post>', views.render_post, name="post"),
 
     path('adminpage/', adminviews.render_thumbnail, name='admin'),
 
-    path('adminpage/adminanimals', adminviews.render_adminanimals, name='animals'),
+    path('adminpage/adminanimals', adminviews.render_adminanimals, name='adminanimals'),
     path('adminpage/adminanimals/addanimal', adminviews.render_addanimal, name='addanimal'),
     path('adminpage/adminanimals/animaldelete/<int:id_animal>', adminviews.render_animal_delete),
     path('adminpage/adminanimals/animalupdate/<int:id_animal>', adminviews.render_animal_update, name='animalupdate'),

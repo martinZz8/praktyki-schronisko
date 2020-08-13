@@ -21,7 +21,7 @@
                         <v-toolbar-title><v-btn color="rgba(60, 200, 100, 1)" href="{% url 'admin' %}">Panel administracyjny</v-btn></v-toolbar-title>
                         <v-spacer></v-spacer>
                         <ul class="admin_menu">
-                            <li><a class="admin_menu" href="{% url 'animals' %}">Zarządzaj zwierzętami</a></li>
+                            <li><a class="admin_menu" href="{% url 'adminanimals' %}">Zarządzaj zwierzętami</a></li>
                             <li><a class="admin_menu" href="{% url 'adminnews' %}">Zarządzaj postami</a></li>
                             <li><a class="admin_menu" href="{% url 'applications' %}">Zarządzaj aplikacjami</a></li>
                         </ul>
@@ -33,20 +33,17 @@
                         <v-row>
                             <v-col cols="4"></v-col>
                             <v-col cols="4">
-                                <v-card color="rgb(255, 255, 255, 0.6)">
+                                <v-card color="rgb(255, 255, 255, 0.7)">
                                     <div class="banner">
                                         <div class="container">
-                                            <div class="banner-content">
+                                            <div>
                                                 <form method = 'POST' enctype="multipart/form-data">
                                                     {% csrf_token %}
-                                                    <table class="addtable">
                                                         {% for animal in addanimal %}
-                                                        <tr>
-                                                            <th class="myth">{{ animal.label }}</th>
-                                                            <td>{{ animal }}</td>
-                                                        </tr>
+                                                        <ul>
+                                                            {{ animal.label }} : {{ animal }}
+                                                        </ul>
                                                         {% endfor %}
-                                                    </table>
                                                     <br/>
                                                     <div style="border-top: 1px solid; height: 20px;"></div>
                                                     <v-btn block type="submit" color="rgba(60, 200, 100, 0.8)" small max-height="30px">Zapisz</v-btn>  

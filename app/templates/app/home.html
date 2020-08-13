@@ -14,7 +14,7 @@
                     </v-row>
                     <v-row justify="start" style="height: 50px; margin-left: 90px;">
                         <div style="padding-left: 26px; margin-top: 80px;">
-                            <v-btn @click="actual_subpage = 1" href="#" x-large color="rgb(211, 211, 211)" elevation="24" style="color: black!important;">Zaadoptuj mnie</v-btn>
+                            <v-btn @click="toggleActiveSubpage(1)" href="{% url 'animals' %}" x-large color="rgb(211, 211, 211)" elevation="24" style="color: black!important;">Zaadoptuj mnie</v-btn>
                         </div>
                     </v-row>
                 </v-container>
@@ -69,7 +69,7 @@
                                     <h4>{{news.title}}</h4>
                                 </div>
                                 <div style="text-align: center;">
-                                    <v-btn color="white" width="120px" height="40px" href="news/post/{{news.ID}}">Czytaj</v-btn>
+                                    <v-btn @click="toggleActiveSubpage(2)" color="white" width="120px" height="40px" href="news/post/{{news.ID}}">Czytaj</v-btn>
                                 </div>
                             </div>
                         </v-card>
