@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from app.model.models import Photo, Animal, News, Application
 from app.controller.photo_controller import image, images_list, get_thumbnail, get_thumbnails_urls, change_thumbnail
 from app.controller.news_controller import get_all_news, get_news_by_id
@@ -17,6 +18,22 @@ def render_thumbnail(request):
 
 def render_adminanimals(request):
     animals=get_all_animals(request)
+
+    name_query = request.GET.get('name')
+    race_query = request.GET.get('race')
+    sex_query = request.GET.get('sex')
+    type_query = request.GET.get('type')
+
+    if name_query != '' and name_query is not None:
+        animals = animals.filter(name__icontains=name_query)
+    if race_query != '' and race_query is not None:
+        animals = animals.filter(race__icontains=race_query)
+    if sex_query != '' and sex_query is not None:
+        animals = animals.filter(sex__exact=sex_query)
+    if type_query != '' and type_query is not None:
+        animals = animals.filter(type__exact=type_query)
+
+
     thumbnails_urls = get_thumbnails_urls(request, animals)
     page = request.GET.get('page', 1)
     paginator = Paginator(animals, 6)
