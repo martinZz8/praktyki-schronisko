@@ -3,6 +3,7 @@
 {% load static %}
 <html lang="pl">
     <head>
+        <meta charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -51,6 +52,51 @@
                                     <v-btn block color="rgba(60, 200, 100, 0.8)" small href="{% url 'addanimal' %}">Dodaj zwierzę</v-btn>
                                 </v-col>
                                 <v-col cols="2"></v-col>
+                            </v-row>
+                            <v-row align="center" justify="center">
+                                <v-col cols="8">
+                                    <v-card color="rgba(0, 0, 0, 0.8)" flat style="color: white;">
+                                        <form method="GET" action=".">
+                                            <v-row class="ma-2">
+                                                <v-col cols="3">
+                                                    <v-text-field dark label="Imię" name="name"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="3">
+                                                    <v-text-field dark label="Rasa" name="race"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="3">
+                                                    <v-select dark :items="sex_of_animal" label="Płeć" name="sex"></v-select>
+                                                </v-col>
+                                                <v-col cols="3">
+                                                    <v-select dark :items="type_of_animal" label="Rodzaj zwierzęcia" name="type_of_animal"></v-select>
+                                                </v-col>
+                                            </v-row>
+                                            <v-row class="ma-2">
+                                                <v-col cols="6" lg="6">
+                                                    <v-menu ref="date_menu1" v-model="date_menu1" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="290px">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field dark v-model="dateFormatted1" label="Szukaj od:" hint="DD/MM/YYYY format" persistent-hint v-bind="attrs" @blur="date1 = parseDate(dateFormatted1)" v-on="on" name="date1"></v-text-field>
+                                                    </template>
+                                                    <v-date-picker dark v-model="date1" no-title @input="date_menu1 = false"></v-date-picker>
+                                                    </v-menu>
+                                                    <p>Date in ISO format: <strong>[[ date1 ]]</strong></p>
+                                                </v-col>
+                                                <v-col cols="6" lg="6">
+                                                    <v-menu ref="date_menu2" v-model="date_menu2" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="290px">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field dark v-model="dateFormatted2" label="Szukaj do:" hint="DD/MM/YYYY format" persistent-hint v-bind="attrs" @blur="date2 = parseDate(dateFormatted2)" v-on="on" name="date2"></v-text-field>
+                                                    </template>
+                                                    <v-date-picker dark v-model="date2" no-title @input="date_menu2 = false"></v-date-picker>
+                                                    </v-menu>
+                                                    <p>Date in ISO format: <strong>[[ date2 ]]</strong></p>
+                                                </v-col>
+                                            </v-row>
+                                            <v-row class="ma-2" justify="end">
+                                                <v-btn type="submit" color="rgba(60, 200, 100, 0.8)" block style="margin: 10px 0px;">Szukaj</v-btn>
+                                            </v-row>
+                                        </form>
+                                    </v-card>
+                                </v-col>
                             </v-row>
                             <v-row>
                                 <v-col cols="2"></v-col>
@@ -128,15 +174,49 @@ var app = new Vue({
   delimiters: ["[[", "]]"],
   el: '#app',
   vuetify: new Vuetify(),
-  data: {
+  data: vm => ({
+    date1: new Date().toISOString().substr(0, 10),
+    dateFormatted1: vm.formatDate(new Date().toISOString().substr(0, 10)),
+    date_menu1: false,
+    date2: new Date().toISOString().substr(0, 10),
+    dateFormatted2: vm.formatDate(new Date().toISOString().substr(0, 10)),
+    date_menu2: false,
     delete_confirm: false,
-    act_id: ''
+    act_id: '',
+    sex_of_animal: [
+        'Samiec',
+        'Samica'
+    ],
+    type_of_animal: [
+        'Pies',
+        'Kot'
+    ],
+  }),
+  watch: {
+    date1 (val) {
+        this.dateFormatted1 = this.formatDate(this.date1)
+    },
+    date2 (val) {
+        this.dateFormatted2 = this.formatDate(this.date2)
+    },
   },
   methods: {
     saveActId(id) {
         this.delete_confirm = true;
         this.act_id = id;
-    }
+    },
+    formatDate (date) {
+        if (!date) return null
+
+        const [year, month, day] = date.split('-')
+        return `${day}/${month}/${year}`
+    },
+    parseDate (date) {
+        if (!date) return null
+
+        const [day, month, year] = date.split('/')
+        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+    },
   }
 });
 
