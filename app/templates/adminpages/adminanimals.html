@@ -75,7 +75,7 @@
                                                 <v-col cols="6" lg="6">
                                                     <v-menu ref="date_menu1" v-model="date_menu1" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="290px">
                                                     <template v-slot:activator="{ on, attrs }">
-                                                        <v-text-field dark v-model="dateFormatted1" label="Szukaj od:" hint="DD/MM/YYYY format" persistent-hint v-bind="attrs" @blur="date1 = parseDate(dateFormatted1)" v-on="on" name="date1"></v-text-field>
+                                                        <v-text-field dark v-model="dateFormatted1" label="Szukaj od:" hint="DD-MM-YYYY format" persistent-hint v-bind="attrs" @blur="date1 = parseDate(dateFormatted1)" v-on="on" name="date1"></v-text-field>
                                                     </template>
                                                     <v-date-picker dark v-model="date1" no-title @input="date_menu1 = false"></v-date-picker>
                                                     </v-menu>
@@ -84,7 +84,7 @@
                                                 <v-col cols="6" lg="6">
                                                     <v-menu ref="date_menu2" v-model="date_menu2" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="290px">
                                                     <template v-slot:activator="{ on, attrs }">
-                                                        <v-text-field dark v-model="dateFormatted2" label="Szukaj do:" hint="DD/MM/YYYY format" persistent-hint v-bind="attrs" @blur="date2 = parseDate(dateFormatted2)" v-on="on" name="date2"></v-text-field>
+                                                        <v-text-field dark v-model="dateFormatted2" label="Szukaj do:" hint="DD-MM-YYYY format" persistent-hint v-bind="attrs" @blur="date2 = parseDate(dateFormatted2)" v-on="on" name="date2"></v-text-field>
                                                     </template>
                                                     <v-date-picker dark v-model="date2" no-title @input="date_menu2 = false"></v-date-picker>
                                                     </v-menu>
@@ -140,7 +140,14 @@
                                     {% if animals.has_other_pages %}
                                     <ul class="pagination">
                                       {% if animals.has_previous %}
-                                      <li><a href="?page={{ animals.previous_page_number }}"><v-icon color="white" size="20px">mdi-menu-left</v-icon></a></li>
+                                      <li><a href="?page={{animals.previous_page_number}}
+                                        {% if request.GET.name %}&name={{request.GET.name}}{% endif %}
+                                        {% if request.GET.sex %}&sex={{request.GET.sex}}{% endif %}
+                                        {% if request.GET.race %}&race={{request.GET.race}}{% endif %}
+                                        {% if request.GET.type %}&type={{request.GET.type}}{% endif %}
+                                        {% if request.GET.date1 %}&date1={{request.GET.date1}}{% endif %}
+                                        {% if request.GET.date2 %}&date2={{request.GET.date2}}{% endif %}
+                                        "><v-icon color="white" size="20px">mdi-menu-left</v-icon></a></li>
                                       {% else %}
                                         <li class="disabled"><v-icon color="white" size="20px">mdi-menu-left</v-icon></li>
                                       {% endif %}
@@ -148,11 +155,25 @@
                                         {% if animals.number == i %}
                                           <li>{{ i }} (obecna strona)</li>
                                         {% else %}
-                                          <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                          <li><a href="?page={{ i }}
+                                            {% if request.GET.name %}&name={{request.GET.name}}{% endif %}
+                                            {% if request.GET.sex %}&sex={{request.GET.sex}}{% endif %}
+                                            {% if request.GET.race %}&race={{request.GET.race}}{% endif %}
+                                            {% if request.GET.type %}&type={{request.GET.type}}{% endif %}
+                                            {% if request.GET.date1 %}&date1={{request.GET.date1}}{% endif %}
+                                            {% if request.GET.date2 %}&date2={{request.GET.date2}}{% endif %}
+                                            ">{{ i }}</a></li>
                                         {% endif %}
                                       {% endfor %}
                                       {% if animals.has_next %}
-                                        <li><a href="?page={{ animals.next_page_number }}"><v-icon color="white" size="20px">mdi-menu-right</v-icon></a></li>
+                                        <li><a href="?page={{animals.next_page_number}}
+                                            {% if request.GET.name %}&name={{request.GET.name}}{% endif %}
+                                            {% if request.GET.sex %}&sex={{request.GET.sex}}{% endif %}
+                                            {% if request.GET.race %}&race={{request.GET.race}}{% endif %}
+                                            {% if request.GET.type %}&type={{request.GET.type}}{% endif %}
+                                            {% if request.GET.date1 %}&date1={{request.GET.date1}}{% endif %}
+                                            {% if request.GET.date2 %}&date2={{request.GET.date2}}{% endif %}
+                                            "><v-icon color="white" size="20px">mdi-menu-right</v-icon></a></li>
                                       {% else %}
                                         <li class="disabled"><v-icon color="white" size="20px">mdi-menu-right</v-icon></li>
                                       {% endif %}
@@ -175,8 +196,8 @@ var app = new Vue({
   el: '#app',
   vuetify: new Vuetify(),
   data: vm => ({
-    date1: new Date().toISOString().substr(0, 10),
-    dateFormatted1: vm.formatDate(new Date().toISOString().substr(0, 10)),
+    date1: new Date(2000, 0, 2).toISOString().substr(0, 10),
+    dateFormatted1: vm.formatDate(new Date(2000, 0, 2).toISOString().substr(0, 10)),
     date_menu1: false,
     date2: new Date().toISOString().substr(0, 10),
     dateFormatted2: vm.formatDate(new Date().toISOString().substr(0, 10)),
@@ -185,11 +206,13 @@ var app = new Vue({
     act_id: '',
     sex_of_animal: [
         'Samiec',
-        'Samica'
+        'Samica',
+        ''
     ],
     type_of_animal: [
         'Pies',
-        'Kot'
+        'Kot',
+        ''
     ],
   }),
   watch: {
@@ -209,12 +232,12 @@ var app = new Vue({
         if (!date) return null
 
         const [year, month, day] = date.split('-')
-        return `${day}/${month}/${year}`
+        return `${day}-${month}-${year}`
     },
     parseDate (date) {
         if (!date) return null
 
-        const [day, month, year] = date.split('/')
+        const [day, month, year] = date.split('-')
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
     },
   }

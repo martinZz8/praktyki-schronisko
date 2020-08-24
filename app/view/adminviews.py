@@ -11,6 +11,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from datetime import datetime
 
 def render_thumbnail(request):
     image_file = get_thumbnail(request, 1)
@@ -23,6 +24,8 @@ def render_adminanimals(request):
     race_query = request.GET.get('race')
     sex_query = request.GET.get('sex')
     type_query = request.GET.get('type')
+    date1_query = request.GET.get('date1')
+    date2_query = request.GET.get('date2')
 
     if name_query != '' and name_query is not None:
         animals = animals.filter(name__icontains=name_query)
@@ -32,6 +35,10 @@ def render_adminanimals(request):
         animals = animals.filter(sex__exact=sex_query)
     if type_query != '' and type_query is not None:
         animals = animals.filter(type__exact=type_query)
+    if date1_query != '' and date1_query is not None:
+        animals = animals.filter(entered__gte=datetime.strptime(date1_query.strip(), '%d-%m-%Y').strftime('%Y-%m-%d %H:%M'))
+    if date2_query != '' and date2_query is not None:
+        animals = animals.filter(entered__lte=datetime.strptime(date2_query.strip(), '%d-%m-%Y').strftime('%Y-%m-%d %H:%M'))
 
 
     thumbnails_urls = get_thumbnails_urls(request, animals)
@@ -44,14 +51,6 @@ def render_adminanimals(request):
     except EmptyPage:
         animal = paginator.page(paginator.num_pages)
     return render(request, 'adminpages/adminanimals.html', {'animals':animal, 'thumbnails':thumbnails_urls})
-
-def index(request):
-    user_list = User.objects.all()
-    page = request.GET.get('page', 1)
-
-    
-
-    return render(request, 'core/user_list.html', { 'users': users })
 
 def render_adminnews(request):
     news=get_all_news(request)
