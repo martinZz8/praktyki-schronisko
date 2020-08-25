@@ -28,13 +28,13 @@ def render_adminanimals(request):
     date2_query = request.GET.get('date2')
 
     if name_query != '' and name_query is not None:
-        animals = animals.filter(name__icontains=name_query)
+        animals = animals.filter(name__icontains=name_query.strip())
     if race_query != '' and race_query is not None:
-        animals = animals.filter(race__icontains=race_query)
+        animals = animals.filter(race__icontains=race_query.strip())
     if sex_query != '' and sex_query is not None:
-        animals = animals.filter(sex__exact=sex_query)
+        animals = animals.filter(sex__exact=sex_query.strip())
     if type_query != '' and type_query is not None:
-        animals = animals.filter(type__exact=type_query)
+        animals = animals.filter(type__exact=type_query.strip())
     if date1_query != '' and date1_query is not None:
         animals = animals.filter(entered__gte=datetime.strptime(date1_query.strip(), '%d-%m-%Y').strftime('%Y-%m-%d %H:%M'))
     if date2_query != '' and date2_query is not None:
