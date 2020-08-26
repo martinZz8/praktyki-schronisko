@@ -122,7 +122,7 @@
                                             <td rowspan="5">{{animal.race}}</td>
                                             <td rowspan="5">{{animal.type}}</td>
                                             <td rowspan="5">{{animal.entered}}</td>
-                                            <td class="content" rowspan="5">{{animal.description}}</td>
+                                            <td class="content" rowspan="5">{{animal.description|linebreaks}}</td>
                                             <td><a @click="saveActId({{animal.ID}})" title="Usuń element"><i class="icon-trash icons"></i></a></td>
                                         </tr>
                                         <tr><td><a href="adminanimals/animalupdate/{{animal.ID}}" title="Edytuj element"><i class="icon-pencil icons"></i></a></td></tr>
@@ -135,7 +135,6 @@
                                         <tr><td colspan="9">Brak zwierząt</td></tr>
                                         {% endfor %}
                                     </table>
-
                                     {% if animals.has_other_pages %}
                                     <ul class="pagination">
                                       {% if animals.has_previous %}
