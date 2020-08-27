@@ -3,6 +3,7 @@
 {% load static %}
 <html lang="pl">
     <head>
+        <meta charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -46,8 +47,7 @@
                     <br/><br/>
                     <v-container fluid>
                         <v-row>
-                            <v-col cols="2"></v-col>
-                            <v-col cols="8">
+                            <v-col cols="12">
                                 <table class="formtable">
                                     <tr>
                                         <th>Dane aplikanta</th>
@@ -64,13 +64,12 @@
                                         <td>{{app.animal.name}}</td>
                                         <td class="content">{{app.info}}</td>
                                         <td>{{app.date}}</td>
-                                        <td><a @click="saveActId({{app.ID}})"><i class="icon-trash icons"></i></a></td>
+                                        <td><a @click="saveActId({{app.ID}})" title="Usuń element"><i class="icon-trash icons"></i></a></td>
                                     </tr>
                                     {% empty %}
                                     <tr><td colspan="6">Brak aplikacji</td></tr>
                                     {% endfor %}
                                 </table>
-
                                 {% if applications.has_other_pages %}
                                 <ul class="pagination">
                                   {% if applications.has_previous %}
@@ -92,9 +91,7 @@
                                   {% endif %}
                                 </ul>
                               {% endif %}
-
                             </v-col>
-                            <v-col cols="2"></v-col>
                         </v-row>
                     </v-container>
                 </v-img>

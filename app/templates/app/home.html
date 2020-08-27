@@ -18,9 +18,9 @@
     {% for animal in last_animals %}
     <div class="new_animal">
         <img src="{{ last_animals_thumbnails|index:forloop.counter0 }}" />
-        <h2>Imie: {{animal.name}}</h2>
-        <p>Płeć: {{animal.sex}}</p>
-        <p>W schronisku od: {{animal.entered|date:"Y-m-d"}}</p>
+        <h2><span class="bold">Imie:</span> {{animal.name}}</h2>
+        <p><span class="bold">Płeć:</span> {{animal.sex}}</p>
+        <p><span class="bold">W schronisku od:</span> {{animal.entered|date:"Y-m-d"}}</p>
     </div>
     {% empty %}
     <h4>Brak zwierząt do wyświetlenia</h4>
@@ -30,7 +30,9 @@
     <h1 class="header_main">Aktualności</h1>
     {% for news in last_news %}
     <article class="art">
-        <img class="example_img" src="{{ news.image.url }}">
+        <div class="img_home">
+            <img class="example_img" src="{{ news.image.url }}">
+        </div>
         <div class="about">
             <h2 class="header_news">{{news.title}}</h2>
             <p>Lorem ipsum dolor, sit amet consectetur
@@ -69,16 +71,34 @@
     {% endfor %}
 </section>
 <section class="socials">
-    <div class="social clearfix"><a href="mailto:mail@domena.pl"><img
-                src="../../static/images/contacts/contact1.png">Napisz maila do nas!</a></div>
-    <div class="social clearfix"><a href="tel:123-456-789"><img src="../../static/images/contacts/contact2.png">Zadzwoń
-            do nas!</a></div>
-    <div class="social clearfix"><a href="#"><img src="../../static/images/contacts/contact3.png">Znajdź nas na
-            Facebooku!</a>
+
+    <h1>Skontaktuj się z nami!</h1>
+    <div class="wrap clearfix">
+        <form>
+            <input type="text" placeholder="Email">
+            <textarea placeholder="Twoja wiadomość"></textarea>
+            <button>Wyślij wiadomość</button>
+        </form>
+        <div class="wrap_social">
+            <!-- <div class="social clearfix"><a href="mailto:mail@domena.pl"><img
+                        src="../../static/images/contacts/contact1.png">Napisz maila do nas!</a></div> -->
+            <!-- <div class="social clearfix"><a href="tel:123-456-789"><img
+                        src="../../static/images/contacts/contact2.png">Zadzwoń
+                    do nas!</a></div>
+            <div class="social clearfix"><a href="#"><img src="../../static/images/contacts/contact3.png">Znajdź nas na
+                    Facebooku!</a>
+            </div>
+            <div class="social clearfix"><a href="#"><img src="../../static/images/contacts/contact4.png">Znajdź nas na
+                    Youtube!</a> -->
+            <ul>
+                <li><a href="tel:123-456-789"><i class="fas fa-phone-alt icon"></i></a></li>
+                <li><a href="#"><i class="fab fa-facebook-f icon"></i></a></li>
+                <li><a href="#"><i class="fab fa-youtube icon"></i></a></li>
+            </ul>
+        </div>
     </div>
-    <div class="social clearfix"><a href="#"><img src="../../static/images/contacts/contact4.png">Znajdź nas na
-            Youtube!</a>
     </div>
+
 </section>
 
 

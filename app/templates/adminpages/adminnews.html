@@ -3,6 +3,7 @@
 {% load static %}
 <html lang="pl">
     <head>
+        <meta charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -53,8 +54,7 @@
                             <v-col cols="2"></v-col>
                         </v-row>
                         <v-row>
-                            <v-col cols="2"></v-col>
-                            <v-col cols="8">
+                            <v-col cols="12">
                                 <table class="formtable">
                                     <tr>
                                         <th>Zdjęcie</th>
@@ -71,16 +71,15 @@
                                         <td rowspan="2" class="content">{{new.content|linebreaks}}</td>
                                         <td rowspan="2" >{{new.date}}</td>
                                         <td rowspan="2" >{{new.status}}</td>
-                                        <td><a @click="saveActId({{new.ID}})"><i class="icon-trash icons"></i></a></td>
+                                        <td><a @click="saveActId({{new.ID}})" title="Usuń element"><i class="icon-trash icons"></i></a></td>
                                     </tr>
                                     <tr>
-                                        <td><a href="adminnews/newsupdate/{{new.ID}}"><i class="icon-pencil icons"></i></a></td>
+                                        <td><a href="adminnews/newsupdate/{{new.ID}}" title="Edytuj element"><i class="icon-pencil icons"></i></a></td>
                                     </tr>
                                     {% empty %}
                                     <tr><td colspan="5">Brak postów</td></tr>
                                     {% endfor %}
                                 </table>
-
                                 {% if news.has_other_pages %}
                                 <ul class="pagination">
                                   {% if news.has_previous %}
@@ -102,9 +101,7 @@
                                   {% endif %}
                                 </ul>
                               {% endif %}
-
                             </v-col>
-                            <v-col cols="2"></v-col>
                         </v-row>
                     </v-container>
                 </v-img>
