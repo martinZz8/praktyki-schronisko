@@ -88,24 +88,16 @@ var app = new Vue({
   data: {
   },
   mounted: function() {
-    // jeżeli nie ma elementu active_subpage w localStorage
-    if (!Vue.$localStorage.hasKey('active_subpage')) {
+    // jeżeli nie ma elementu active_subpage w localStorage LUB jeżeli wchodzimy na stronę główną
+    if (!Vue.$localStorage.hasKey('active_subpage') || window.location.pathname == "/") {
         Vue.$localStorage.set('active_subpage', '0')
         var active_element = '#' + Vue.$localStorage.get('active_subpage')
-        $(active_element).removeClass("inactive");
-        $(active_element).addClass("active");
-    } // jeżeli wchodzimy na stronę główną
-    else if (window.location.pathname == "/") {
-        Vue.$localStorage.set('active_subpage', '0')
-        var active_element = '#' + Vue.$localStorage.get('active_subpage')
-        $(active_element).removeClass("inactive");
-        $(active_element).addClass("active");
     }
     else {
         var active_element = '#' + Vue.$localStorage.get('active_subpage')
-        $(active_element).removeClass("inactive");
-        $(active_element).addClass("active");
     }
+    $(active_element).removeClass("inactive");
+    $(active_element).addClass("active");
   },
   methods: {
       toggleActiveSubpage(number) {
