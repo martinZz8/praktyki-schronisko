@@ -54,8 +54,7 @@
                             <v-col cols="2"></v-col>
                         </v-row>
                         <v-row>
-                            <v-col cols="2"></v-col>
-                            <v-col cols="8">
+                            <v-col cols="12">
                                 <table class="formtable">
                                     <tr>
                                         <th>Zdjęcie</th>
@@ -81,7 +80,6 @@
                                     <tr><td colspan="5">Brak postów</td></tr>
                                     {% endfor %}
                                 </table>
-
                                 {% if news.has_other_pages %}
                                 <ul class="pagination">
                                   {% if news.has_previous %}
@@ -103,9 +101,7 @@
                                   {% endif %}
                                 </ul>
                               {% endif %}
-
                             </v-col>
-                            <v-col cols="2"></v-col>
                         </v-row>
                     </v-container>
                 </v-img>

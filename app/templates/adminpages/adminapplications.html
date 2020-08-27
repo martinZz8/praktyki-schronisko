@@ -47,8 +47,7 @@
                     <br/><br/>
                     <v-container fluid>
                         <v-row>
-                            <v-col cols="2"></v-col>
-                            <v-col cols="8">
+                            <v-col cols="12">
                                 <table class="formtable">
                                     <tr>
                                         <th>Dane aplikanta</th>
@@ -71,7 +70,6 @@
                                     <tr><td colspan="6">Brak aplikacji</td></tr>
                                     {% endfor %}
                                 </table>
-
                                 {% if applications.has_other_pages %}
                                 <ul class="pagination">
                                   {% if applications.has_previous %}
@@ -93,9 +91,7 @@
                                   {% endif %}
                                 </ul>
                               {% endif %}
-
                             </v-col>
-                            <v-col cols="2"></v-col>
                         </v-row>
                     </v-container>
                 </v-img>

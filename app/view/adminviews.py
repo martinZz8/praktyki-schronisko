@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from app.model.models import Photo, Animal, News, Application
 from app.controller.photo_controller import image, images_list, get_thumbnail, get_thumbnails_urls, change_thumbnail
 from app.controller.news_controller import get_all_news, get_news_by_id
@@ -10,6 +11,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from datetime import datetime
 
 def render_thumbnail(request):
     image_file = get_thumbnail(request, 1)
@@ -17,6 +19,28 @@ def render_thumbnail(request):
 
 def render_adminanimals(request):
     animals=get_all_animals(request)
+
+    name_query = request.GET.get('name')
+    race_query = request.GET.get('race')
+    sex_query = request.GET.get('sex')
+    type_query = request.GET.get('type')
+    date1_query = request.GET.get('date1')
+    date2_query = request.GET.get('date2')
+
+    if name_query != '' and name_query is not None:
+        animals = animals.filter(name__icontains=name_query.strip())
+    if race_query != '' and race_query is not None:
+        animals = animals.filter(race__icontains=race_query.strip())
+    if sex_query != '' and sex_query is not None:
+        animals = animals.filter(sex__exact=sex_query.strip())
+    if type_query != '' and type_query is not None:
+        animals = animals.filter(type__exact=type_query.strip())
+    if date1_query != '' and date1_query is not None:
+        animals = animals.filter(entered__gte=datetime.strptime(date1_query.strip(), '%d-%m-%Y').strftime('%Y-%m-%d %H:%M'))
+    if date2_query != '' and date2_query is not None:
+        animals = animals.filter(entered__lte=datetime.strptime(date2_query.strip(), '%d-%m-%Y').strftime('%Y-%m-%d %H:%M'))
+
+
     thumbnails_urls = get_thumbnails_urls(request, animals)
     page = request.GET.get('page', 1)
     paginator = Paginator(animals, 6)
@@ -27,14 +51,6 @@ def render_adminanimals(request):
     except EmptyPage:
         animal = paginator.page(paginator.num_pages)
     return render(request, 'adminpages/adminanimals.html', {'animals':animal, 'thumbnails':thumbnails_urls})
-
-def index(request):
-    user_list = User.objects.all()
-    page = request.GET.get('page', 1)
-
-    
-
-    return render(request, 'core/user_list.html', { 'users': users })
 
 def render_adminnews(request):
     news=get_all_news(request)
