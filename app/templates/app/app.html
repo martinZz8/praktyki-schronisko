@@ -22,15 +22,16 @@
                                     {% endfor %}
                                 </v-col>
                             </v-row>
+                            <v-divider></v-divider>
+                            <v-card-actions class="ma-2">
+                                <v-btn width="100px" height="40px" type="submit">Wyślij</v-btn>
+                                <v-spacer></v-spacer>
+                                <v-btn color="white" width="320px" height="40px" href="{% url 'animal' animal %}">Powrót do strony zwierzęcia</v-btn>
+                            </v-card-actions>
                         </form>
                     </v-col>
                 </v-row>
-                <v-divider></v-divider>
-                <v-card-actions class="ma-2">
-                    <v-btn width="100px" height="40px" type="submit">Wyślij</v-btn>
-                    <v-spacer></v-spacer>
-                    <v-btn color="white" width="320px" height="40px" href="{% url 'animal' animal %}">Powrót do strony zwierzęcia</v-btn>
-                </v-card-actions>
+
             </v-card>
         </v-col>
     </v-row>
