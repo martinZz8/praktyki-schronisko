@@ -10,13 +10,13 @@ from django.utils import timezone
 from django.dispatch import receiver
 import os
 
-class Admin(models.Model):
-    login = models.CharField(max_length=30)
-    password = models.CharField(max_length=500)
+# class Admin(models.Model):
+#     login = models.CharField(max_length=30)
+#     password = models.CharField(max_length=500)
 
-    class Meta:
-        managed = True
-        db_table = 'admin'
+#     class Meta:
+#         managed = True
+#         db_table = 'admin'
 
 
 class Animal(models.Model):
@@ -28,7 +28,7 @@ class Animal(models.Model):
     entered = models.DateTimeField()
     type = models.CharField(max_length=20)
     race = models.CharField(max_length=30)
-    visible = models.BooleanField(default = False)
+    visible = models.BooleanField(default=False)
 
     class Meta:
         managed = True
@@ -39,7 +39,7 @@ class Animal(models.Model):
         return data
 
     def status(self):
-        if self.visible==False:
+        if self.visible == False:
             return "niewidoczne"
         else:
             return "widoczne"
@@ -51,20 +51,21 @@ class Application(models.Model):
     surname = models.CharField(max_length=30)
     email = models.CharField(max_length=40)
     info = models.TextField(blank=True, null=True)
-    animal = models.ForeignKey(Animal, on_delete = models.CASCADE)
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
 
     class Meta:
         managed = True
         db_table = 'application'
 
+
 class News(models.Model):
     ID = models.AutoField(primary_key=True)
     title = models.CharField(max_length=60)
     content = models.TextField()
-    image = models.ImageField(upload_to = 'image')
+    image = models.ImageField(upload_to='image')
     date = models.DateTimeField(default=timezone.now)
-    visible = models.BooleanField(default = True)
+    visible = models.BooleanField(default=True)
 
     class Meta:
         managed = True
@@ -72,7 +73,7 @@ class News(models.Model):
         verbose_name_plural = 'News'
 
     def status(self):
-        if self.visible==False:
+        if self.visible == False:
             return "Nie"
         else:
             return "Tak"
@@ -80,13 +81,15 @@ class News(models.Model):
 
 class Photo(models.Model):
     ID = models.AutoField(primary_key=True)
-    animal = models.ForeignKey(Animal, on_delete = models.CASCADE, blank=True, null=True)
-    image = models.ImageField(upload_to = 'image', blank=True)
-    thumbnail = models.BooleanField(default = False)
+    animal = models.ForeignKey(
+        Animal, on_delete=models.CASCADE, blank=True, null=True)
+    image = models.ImageField(upload_to='image', blank=True)
+    thumbnail = models.BooleanField(default=False)
 
     class Meta:
         managed = True
         db_table = 'photo'
+
 
 @receiver(models.signals.post_delete, sender=Photo)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
@@ -98,6 +101,7 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
         if os.path.isfile(instance.image.path):
             os.remove(instance.image.path)
 
+
 @receiver(models.signals.post_delete, sender=News)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
     """
@@ -107,6 +111,7 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
     if instance.image:
         if os.path.isfile(instance.image.path):
             os.remove(instance.image.path)
+
 
 @receiver(models.signals.pre_save, sender=News)
 def auto_delete_file_on_change(sender, instance, **kwargs):

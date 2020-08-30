@@ -24,6 +24,7 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.render_home, name='home'),
+    #     path('send_mail/', views.contact, name='send_mail'),
     path('animals/', views.render_animals, name='animals'),
     path('animals/animal/<int:id_animal>', views.render_animal, name="animal"),
     path('animals/animal/app/<int:id_animal>',

@@ -7,72 +7,6 @@ $(document).on('scroll', function () {
     const windowHeight = $(window).height()
     const scrollValue = $(this).scrollTop();
 
-    // const $art1 = $('.art1');
-    // const art1FromTop = $art1.offset().top
-    // const art1Height = $art1.outerHeight()
-
-    // const $art2 = $('.art2');
-    // const art2FromTop = $art2.offset().top
-    // const art2Height = $art2.outerHeight()
-
-    // const $art3 = $('.art3');
-    // const art3FromTop = $art3.offset().top
-    // const art3Height = $art3.outerHeight()
-
-    // if (windowHeight <= 736) {
-    //     if (scrollValue > art1FromTop + art1Height - windowHeight - 200) {
-    //         console.log(windowHeight);
-    //         $art1.addClass('active');
-    //     }
-
-    //     if (scrollValue > art2FromTop + art2Height - windowHeight - 200) {
-    //         $art2.addClass('active');
-    //     }
-
-    //     if (scrollValue > art3FromTop + art3Height - windowHeight - 200) {
-    //         $art3.addClass('active');
-    //     }
-    // } else if (windowHeight <= 960) {
-    //     if (scrollValue > art1FromTop + art1Height - windowHeight - 120) {
-    //         console.log(windowHeight);
-    //         $art1.addClass('active');
-    //     }
-
-    //     if (scrollValue > art2FromTop + art2Height - windowHeight - 120) {
-    //         $art2.addClass('active');
-    //     }
-
-    //     if (scrollValue > art3FromTop + art3Height - windowHeight - 120) {
-    //         $art3.addClass('active');
-    //     }
-    // } else if (windowHeight <= 1280) {
-    //     if (scrollValue > art1FromTop + art1Height - windowHeight - 250) {
-    //         console.log(windowHeight);
-    //         $art1.addClass('active');
-    //     }
-
-    //     if (scrollValue > art2FromTop + art2Height - windowHeight - 250) {
-    //         $art2.addClass('active');
-    //     }
-
-    //     if (scrollValue > art3FromTop + art3Height - windowHeight - 250) {
-    //         $art3.addClass('active');
-    //     }
-    // } else {
-    //     if (scrollValue > art1FromTop + art1Height - windowHeight - 100) {
-    //         console.log(windowHeight);
-    //         $art1.addClass('active');
-    //     }
-
-    //     if (scrollValue > art2FromTop + art2Height - windowHeight - 100) {
-    //         $art2.addClass('active');
-    //     }
-
-    //     if (scrollValue > art3FromTop + art3Height - windowHeight - 100) {
-    //         $art3.addClass('active');
-    //     }
-    // }
-
     const $art1 = $('.art:nth-of-type(1)');
     const art1FromTop = $art1.offset().top
     const art1Height = $art1.height()
@@ -129,3 +63,15 @@ $(document).on('scroll', function () {
         $('.new_animal').removeClass('active');
     }
 })
+
+$(document).ready(function ($) {
+    let url = window.location.href;
+    let activePage = url;
+    $('.menu_desktop a').each(function () {
+        var linkPage = this.href;
+        if (activePage == linkPage) {
+            $(this).closest("a").attr('id', 'current_page');
+            $(this).find("i").attr('id', 'current_page_border');
+        }
+    });
+});

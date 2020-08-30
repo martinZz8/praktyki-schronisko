@@ -72,12 +72,17 @@
             {% block content %}
 
             {% endblock %}
-            <footer>[[ new Date().getFullYear() ]] - &copy; Schronisko w Rzeszowie</footer>
+            <footer>
+                <span id="year"></span> - &copy; Schronisko w Rzeszowie
+            </footer>
         </v-app>
     </div>
+
 </body>
 
 </html>
+
+
 
 <script>
     var app = new Vue({
@@ -87,5 +92,14 @@
         data: {},
     });
 </script>
+
+<script>
+    let today = new Date();
+    let year = today.getFullYear();
+
+    document.getElementById('year').innerHTML = year;
+</script>
+
+
 
 <script src="../../static/scripts/script.js"></script>
