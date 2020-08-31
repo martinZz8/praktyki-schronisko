@@ -98,12 +98,14 @@
     <div class="col-md-3 col-sm-6">
       <div class="card text-center border-0">
         <div class="card-block">
-          <img
-            src="{{ animals_thumbnails|index:forloop.counter0 }}"
-            alt=""
-            class="img-fluid"
-            style="height: 150px"
-          />
+          <div class="inner">
+            <img
+              src="{{ animals_thumbnails|index:forloop.counter0 }}"
+              alt=""
+              class="img-fluid"
+              style="height: 150px"
+            />
+          </div>
           <div class="card-title" style="margin-top: 10px">
             <h4>{{animal.name}}</h4>
           </div>

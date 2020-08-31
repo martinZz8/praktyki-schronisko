@@ -386,6 +386,18 @@ nav.off {
   text-align: center;
 }
 
+.inner {
+  overflow: hidden;
+}
+
+.inner img {
+  transition: all 1.5s ease;
+}
+
+.inner:hover img {
+  transform: scale(1.5);
+}
+
 img + a.btn1 {
   width: 70%;
   max-width: 400px;

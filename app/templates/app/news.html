@@ -96,16 +96,18 @@
     <div class="col-md-3 col-sm-6">
       <div class="card text-center border-0">
         <div class="card-block">
-          <img
-            src="{{ new.image.url }}"
-            alt=""
-            class="img-fluid"
-            style="height: 150px"
-          />
+          <div class="inner">
+            <img
+              src="{{ new.image.url }}"
+              alt=""
+              class="img-fluid"
+              style="height: 150px"
+            />
+          </div>
           <div class="card-title" style="margin-top: 10px">
             <h4>{{new.title}}</h4>
           </div>
-          <p> {{new.date}} </p>
+          <p>{{new.date}}</p>
           <a
             style="margin-top: 10px; color: white"
             href="/post/{{new.ID}}"
@@ -115,7 +117,7 @@
         </div>
       </div>
     </div>
-	  {% empty %}
+    {% empty %}
     <h4>Brak aktualności do wyświetlenia</h4>
     {% endfor %}
   </div>
