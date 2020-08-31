@@ -1,0 +1,56 @@
+{% extends "app/base.html" %}
+{% block content %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+  crossorigin="anonymous"
+/>
+<div class="banner_static">
+    <h1 class="heading_static" style="margin-bottom: 0">{{post.title}}</h1>
+    <img
+      class="photo_banner_static"
+      src="{{post.image.url}}"
+    />
+  </div>
+<!-- <v-container fluid style="height: 320px;">
+</v-container>
+<v-container fluid style="background-color: rgb(116, 97, 62);">
+    <v-row align="center" justify="center" class="my-2">
+        <v-col cols="9" style="background-color: rgb(189, 150, 78);">
+            <v-row>
+                <v-col cols="4">
+                    <v-row justify="center">
+                        <v-img class="ma-5" width="300px" height="300px"contain src="{{post.image.url}}"></v-img>
+                    </v-row>
+                </v-col>
+                <v-col class="mt-3" cols="8">
+                    <v-row justify="end">
+                        <p style="padding: 0px 4px; margin: 20px; font-size: 15px; font-weight: 700;">{{post.date}}</p>
+                    </v-row>
+                    <v-row justify="center">
+                        <h5>{{post.title}}</h5>
+                    </v-row>
+                </v-col>
+            </v-row>
+            <v-divider></v-divider>
+            <v-row class="ma-2">
+                <p style="text-align: justify; padding: 0px 20px; margin: 10px; font-size: 16px; font-weight: 400;">{{post.content|linebreaks}}</p>
+            </v-row>
+        </v-col>
+    </v-row>
+</v-container> -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="card border-0">
+              <div class="card-block">
+                <div class="card-text">
+                  <p>{{post.content|linebreaks}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock %}

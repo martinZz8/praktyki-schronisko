@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Schronisko w Rzeszowie</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fontello/css/fontello.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+    <script src="https://kit.fontawesome.com/087f198222.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <v-app class="myFont">
+            <!-- <div class="video_banner">
+                <video class="video1" loop autoplay>
+                    <source src="../../static/videos/Funny_Dog1.webm" type="video/webm" />
+                </video>
+            </div> -->
+            <v-app-bar app>
+
+                <a id="start" class="menu_logo" href="#"><img src="../../static/images/logo1.png" alt=""></a>
+                <v-spacer></v-spacer>
+                <nav class="menu_desktop">
+                    <ul class="menu_list clearfix">
+                        <li><a class="menu_list" href="#">Zaadoptuj mnie <i class="fas fa-paw"></i></a></li>
+                        <li><a class="menu_list" href="#">O schronisku <i class="fas fa-home"></i></a></li>
+                        <li><a class="menu_list" href="#">Informacje o adopcji <i class="fas fa-info"></i></a></li>
+                        <li><a class="menu_list" href="#">Wesprzyj nas <i class="fas fa-money-bill-alt"></i></a>
+                        </li>
+                        <li><a class="menu_list" href="#">Kontakt <i class="fas fa-phone-alt"></i></a></li>
+                    </ul>
+                </nav>
+                <nav class="menu_mobile off">
+                    <ul>
+                        <li><a href="#" class="menu_list_mobile"><i class="fas fa-paw"></i>Zaadoptuj mnie</a></li>
+                        <li><a href="#" class="menu_list_mobile"><i class="fas fa-home"></i>O schronisku</a></li>
+                        <li><a href="#" class="menu_list_mobile"><i class="fas fa-info"></i>Informacje o adopcji</a>
+                        </li>
+                        <li><a href="#" class="menu_list_mobile"><i class="fas fa-money-bill-alt"></i>Wesprzyj
+                                nas</a>
+                        </li>
+                        <li><a href="#" class="menu_list_mobile"><i class="fas fa-phone-alt"></i>Kontakt</a></li>
+                    </ul>
+                    <div class="burger">
+                        <i class="fas fa-bars"></i>
+                        <i class="fas fa-angle-up off"></i>
+                    </div>
+                </nav>
+
+            </v-app-bar>
+            {% block content %}
+
+            {% endblock %}
+            <footer>[[ new Date().getFullYear() ]] - &copy; Schronisko w Rzeszowie</footer>
+        </v-app>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var app = new Vue({
+        delimiters: ["[[", "]]"],
+        el: '#app',
+        vuetify: new Vuetify(),
+        data: {},
+    });
+</script>
+
+<script src="../../static/scripts/script.js"></script>

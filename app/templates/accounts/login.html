@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <style>
+        html {
+            font-family: "Roboto", sans-serif;
+        }
+
+        .page_login {
+            width: 250px;
+            padding: 8% 0 0;
+            margin: auto;
+        }
+
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #FFFFFF;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+        .form input {
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form button {
+
+            text-transform: uppercase;
+            outline: 0;
+            background: #4CAF50;
+            width: 100%;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+        }
+
+        .form button:hover,
+        .form button:active,
+        .form button:focus {
+            background: #43A047;
+        }
+
+        .form .message {
+            margin: 15px 0 0;
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+
+        .form .message a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .form .register-form {
+            display: none;
+        }
+
+        body {
+            background: green !important;
+        }
+
+        .forgot_password {
+            margin-top: 15px;
+        }
+
+        .forgot_password a {
+            color: black !important;
+            text-decoration: none;
+            transition: 1s;
+        }
+
+        .forgot_password a:hover {
+            color: red !important;
+            text-decoration: underline;
+        }
+
+        @media (min-width: 360px) {
+            .page_login {
+                width: 280px;
+            }
+        }
+
+        @media (min-width: 411px) {
+            .page_login {
+                width: 320px;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .page_login {
+                width: 360px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .page_login {
+                width: 460px;
+            }
+
+            .form input {
+                font-size: 21px;
+            }
+
+            .form button {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page_login">
+        <div class="form">
+            <form class="form_login" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Nazwa użytkownika" name="username" />
+                <input type="password" placeholder="Hasło" name="password" />
+                <button>Zaloguj!</button>
+                <div class="forgot_password"><a href="{% url 'reset_password' %}">Zapomniałeś hasła?</a></div>
+                {% for message in messages %}
+                <p id="messages">{{message}}</p>
+                {% endfor %}
+        </div>
+    </div>
+    </form>
+
+</body>
+
+</html>

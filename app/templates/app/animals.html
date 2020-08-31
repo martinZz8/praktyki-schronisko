@@ -1,0 +1,122 @@
+{% extends "app/base.html" %} {% block content %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+  crossorigin="anonymous"
+/>
+<div class="banner_static">
+  <h1 class="heading_static" style="margin-bottom: 0">Nasze zwierzęta</h1>
+  <img
+    class="photo_banner_static"
+    src="../../static/images/background_banner_animals.jpg"
+  />
+</div>
+<!-- <v-container fluid style="background-color: rgb(172, 143, 89)">
+  <v-row
+    align="center"
+    justify="center"
+    style="margin-top: 10px; margin-bottom: 10px"
+  >
+    <v-col cols="10">
+      {% load index %} {% for animal in animals %}
+      <v-card
+        color="#fff6d0"
+        width="450px"
+        height="240px"
+        style="float: left; margin: 10px"
+      >
+        <div style="float: left">
+          <v-img
+            class="ma-5"
+            width="200px"
+            height="200px"
+            contain
+            src="{{ animals_thumbnails|index:forloop.counter0 }}"
+          ></v-img>
+        </div>
+        <div style="float: left; height: 240px">
+          <div
+            style="
+              display: block;
+              width: 200px;
+              height: 155px;
+              margin: 15px 2px 2px 2px;
+            "
+          >
+            <div style="margin: 10px 0px">
+              <h4>{{animal.name}}</h4>
+            </div>
+          </div>
+          <div style="display: block; text-align: center; margin: 3px 1px">
+            <v-btn
+              color="white"
+              width="150px"
+              height="40px"
+              href="animal/{{animal.ID}}"
+              >Zobacz więcej</v-btn
+            >
+          </div>
+        </div>
+      </v-card>
+      {% empty %}
+      <h4>Brak aktualności do wyświetlenia</h4>
+      {% endfor %}
+    </v-col>
+  </v-row>
+</v-container> -->
+<form method="GET" action="animals">
+  <div class="select-container">
+    <div class="select">
+      <select name="type" id="format">
+        <option selected disabled>Rodzaj zwierzęcia</option>
+        <option value="Pies" name="type">Pies</option>
+        <option value="Kot" name="type">Kot</option>
+      </select>
+    </div>
+    <div class="select" style="margin-left: 5px" id="select_sex">
+      <select name="sex" id="format">
+        <option selected disabled>Płeć</option>
+        <option value="Samiec" name="sex">Samiec</option>
+        <option value="Samica" name="sex">Samica</option>
+      </select>
+    </div>
+    <button
+      type="submit"
+      style="color: white"
+      href="animal/{{animal.ID}}"
+      class="btn btn-success"
+      id="btn-filter-animals"
+    >
+      Szukaj
+    </button>
+  </div>
+</form>
+<div class="container">
+  <div class="row">
+    {% load index %} {% for animal in animals %}
+    <div class="col-md-3 col-sm-6">
+      <div class="card text-center border-0">
+        <div class="card-block">
+          <img
+            src="{{ animals_thumbnails|index:forloop.counter0 }}"
+            alt=""
+            class="img-fluid"
+            style="height: 150px"
+          />
+          <div class="card-title" style="margin-top: 10px">
+            <h4>{{animal.name}}</h4>
+          </div>
+          <a
+            style="margin-top: 10px; color: white"
+            href="/animal/{{animal.ID}}"
+            class="btn btn-success"
+            >Zobacz więcej</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

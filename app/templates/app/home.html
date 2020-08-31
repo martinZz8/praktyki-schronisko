@@ -1,0 +1,106 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+<header class="banner">
+    <h1 class="heading">Schronisko w Rzeszowie</h1>
+    <img class="photo_banner" src="../../static/images/background_banner_dog1.jpg" />
+    <img class="photo_banner" src="../../static/images/background_banner_dog2.jpg" />
+    <img class="photo_banner" src="../../static/images/background_banner_dog3.jpg" />
+
+    <a class="btn1" href="{% url 'animals' %}">
+        <p><span class="bg"></span><span class="base">
+            </span><span class="text">Zaadoptuj mnie!</span>
+        </p>
+    </a>
+</header>
+<section class="new_animals clearfix">
+    <h1>Nowi w schronisku</h1>
+    {% load index %}
+    {% for animal in last_animals %}
+    <div class="new_animal">
+        <img src="{{ last_animals_thumbnails|index:forloop.counter0 }}" />
+        <h2><span class="bold">Imie:</span> {{animal.name}}</h2>
+        <p><span class="bold">Płeć:</span> {{animal.sex}}</p>
+        <p><span class="bold">W schronisku od:</span> {{animal.entered|date:"Y-m-d"}}</p>
+        <a href="animals/animal/{{animal.ID}}">więcej <i class="fas fa-angle-right"></i></a>
+    </div>
+    {% empty %}
+    <h4>Brak zwierząt do wyświetlenia</h4>
+    {% endfor %}
+</section>
+<section class="news">
+    <h1 class="header_main">Aktualności</h1>
+    {% for news in last_news %}
+    <article class="art">
+        <div class="img_home">
+            <img class="example_img" src="{{ news.image.url }}">
+        </div>
+        <div class="about">
+            <h2 class="header_news">{{news.title}}</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur
+                adipisicing elit. Nisi possimus, impedit
+                aspernatur tenetur eveniet perferendis quis,
+                placeat beatae deserunt nobis rem repellendus
+                magni totam nostrum! Laboriosam ex minus eligendi.
+            </p>
+            <a href="news/post/{{news.ID}}">więcej <i class="fas fa-angle-right"></i></a>
+        </div>
+    </article>
+    <!-- <article class="art2">
+        <img class="example_img" src="../../static/images/background_adminnews.jpg">
+        <div class="about">
+            <h2 class="header_news">Zabierz kociaka!</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Quisquam, incidunt perspiciatis.
+                Autem animi voluptatibus ratione rem corrupti beatae
+                commodi nemo eum tenetur fugiat, nulla magnam tempora
+                voluptate laborum voluptatum aliquid.</p>
+        </div>
+    </article>
+    <article class="art3">
+        <img class="example_img" src="../../static/images/background_addanimals.jpg" alt="">
+        <div class="about">
+            <h2 class="header_news">Pieski czekają na Ciebie!</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing
+                elit. Illo nesciunt, natus enim dolorem perferendis
+                sed a distinctio quasi. Velit voluptate quae eveniet
+                alias expedita necessitatibus, molestias illum
+                dignissimos officiis voluptatum?</p>
+        </div> -->
+    </article>
+    {% empty %}
+    <h4>Brak aktualności do wyświetlenia</h4>
+    {% endfor %}
+</section>
+<section class="socials">
+
+    <h1>Skontaktuj się z nami!</h1>
+    <div class="wrap clearfix">
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <input type="text" name="message-name" placeholder="Twoje imię" required>
+            <input type="text" name="message-email" placeholder="Email" required>
+            <textarea name="message" placeholder="Twoja wiadomość" required></textarea>
+            <button type="submit">Wyślij</button>
+        </form>
+        {% if message_name %}
+        <center>
+            <h2>Dziękujemy za wiadomość: {{ message_name }}</h2>
+            <p>Odpiszemy do Ciebie niebawem...</p>
+        </center>
+        {% endif %}
+    </div>
+
+    </div>
+
+</section>
+<div class="wrap_social">
+    <h3>Sprawdź nasze social media!</h3>
+    <ul class="clearfix">
+        <li><a href="tel:123-456-789"><i class="fas fa-phone-alt icon"></i></a></li>
+        <li><a href="#"><i class="fab fa-facebook-f icon"></i></a></li>
+        <li><a href="#"><i class="fab fa-youtube icon"></i></a></li>
+    </ul>
+</div>
+
+{% endblock %}
